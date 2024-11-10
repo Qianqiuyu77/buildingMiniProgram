@@ -1,0 +1,124 @@
+.scroll{
+  width: 100%;
+  margin: auto;
+  height: 100vh;
+  background-color: #fff;
+ }
+  page{
+   background-color: #f2f2f2;
+ }
+
+
+ 
+ .searchbox{
+   display: flex;
+ }
+ .searchinput{
+   border: 1px solid #ffaa42;
+   border-radius: 20rpx;
+   width: 90%;
+   margin-top: 20rpx;
+   margin-right: 20rpx;
+   font-size: 30rpx;
+   color: gray;
+ }
+ .plbox {  
+  position: relative;  
+  width: 95%;  
+  border-radius: 20rpx;
+  margin-left: 3vw;  
+  margin-bottom: 30rpx; /* 注意：我将 rpx 改为了 px，因为 CSS 通常使用 px、em、rem 等单位，rpx 是微信小程序中的单位 */  
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4); /* 减少偏移量、模糊半径和扩展半径，并调整透明度 */  
+  padding: 10rpx;
+}
+
+ .info{
+   width: 100%;
+   height: 6vh;
+   position: relative;
+ }
+ .pl{
+   border-bottom: #1fdbae 1px solid;
+   padding-top: 20rpx;
+   padding-left: 20rpx;
+   width: 90%;
+   margin: 0 auto;
+  
+ }
+ .container{
+  width: 100%;
+ }
+ .textinfo{
+   width: 100%;
+   overflow-x:hidden;
+ }
+ .toux{
+   width: 80rpx;
+   height: 80rpx;
+   border-radius: 50%;
+ }
+ .info{
+   display: flex;
+ }
+ .nameAndTime{
+   margin-left: 20rpx;
+   font-size: 22rpx;
+   display: flex;
+   flex-direction: column;
+ }
+ .imgBox {
+  display: flex;
+  gap: 20rpx;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  align-content: center;
+ }
+ .imgBox image{
+  width: 24vw;
+  height: 24vw;
+  border-radius: 20rpx;
+ }
+
+ .pltoux{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+.plinfo{
+  width: 80vw;
+}
+.plItem{
+  display: flex;
+}
+.plnameandtime{
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-contain-ti {
+  display: flex;
+  height: 35px;
+  margin: 20px;
+  border: 3rpx solid #1fdbae;
+  border-radius: 10rpx;
+}
+
+.text-ti {
+  position: absolute;
+  font-size: 12px;
+  background: white;
+  margin: -10px 0 0 10px;
+  padding: 0 5px;
+  color: rgb(144, 147, 167);
+}
+
+.input1 {
+  margin:  auto 10px;
+}
+.vantbutton{
+  position:absolute;
+  right: 30rpx;
+  margin: -10rpx;
+}
+

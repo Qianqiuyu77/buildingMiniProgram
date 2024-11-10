@@ -1,0 +1,66 @@
+<!--pages/user/index.wxml-->
+<view class="pop" wx:if="{{show}}">
+  <view class="infoBox">
+  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+  <image class="avatar" src="{{tempUrl}}"></image>
+  <text class="tips">点击上传头像</text>
+</button> 
+<view class="inputInfo">
+  <view class="shuru"> 昵称：<input type="nickname" class="weui-input" placeholder="请输入昵称"  bindinput="getinput" /></view>
+ <!-- <view class="shuru">手机号： <button style="width: 25vw; height: 3vh; font-size: small; margin-left: -0.1rem;" class="bindButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button></view> -->
+</view>
+<button class="bindButton" style="line-height: 60rpx;" bind:tap="signIn">确定</button>
+</view>
+</view>
+<view class="user_info_wrap">
+  <view class="user_img_wrap">
+    <image  class="user_bg" src="{{backUrl}}" style="width: 620rpx; height: 450rpx; display: inline-block; box-sizing: border-box; position: relative; left: 66rpx; top: 0rpx">
+    </image>
+    <view class="user_info" >
+      <image class="user_icon"  open-type="chooseAvatar" src="{{avatUrl}}" style="position: relative; left: -204rpx; top: 49rpx"></image>
+      <view wx:if="{{hasUserInfo}}" class="user_name" style="position: relative; left: 30rpx; top: -176rpx">{{name}}</view>
+      <view  wx:if="{{!hasUserInfo}}" style="position: relative; left: 30rpx; top: -125rpx; color: #000; " bindtap="getUserInfo">
+        <text decode="{{true}}" style=" font-size:19px;color: #f26326; "> 登录/注册&ensp;></text>
+      </view>
+     
+    </view>
+  </view>
+</view>
+<view wx:if="{{hasUserInfo}}" class="menu_content">
+  <view class="main" style="position: absolute; left: 376rpx; top: -46rpx">
+    <!-- 我的订单 -->
+    <view class="order_wrap">
+      <view class="order_content">
+        <view class="navi" bindtap="jump0">
+          <image class="ddicon" src="../../images/收藏.png"></image>
+          <view class="order_name">收藏</view>
+        </view>
+        <view class="navi" bindtap="jump1">
+          <image class="ddicon" src="../../images/编辑撰写.png"></image>
+          <view class="order_name">设计</view>
+        </view>
+        <view class="navi" bindtap="jump2">
+          <image class="ddicon" src="../../images/问答.png"></image>
+          <view class="order_name">问答</view>
+        </view>
+        <view class="navi" bindtap="jump3">
+          <image class="ddicon" src="../../images/帮助，客服.png"></image>
+          <view class="order_name">帮助</view>
+        </view>
+      </view>
+    </view>
+    <!-- 收货地址管理 -->
+
+    <!-- 应用相关 -->
+    <view class="app_wrap">
+      <view class="info_item app_contact" bindtap="callPhone">
+        <text>联系客服</text>
+        <text>182-9363-9298</text>
+      </view>
+      <view class="info_item">建议反馈</view>
+      <view class="info_item">分享给朋友</view>
+      <view class="info_item">关于我们</view>
+    </view>
+    <!-- 推荐 -->
+  </view>
+</view>

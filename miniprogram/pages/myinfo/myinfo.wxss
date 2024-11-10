@@ -1,0 +1,197 @@
+/* pages/myinfo/myinfo.wxss */
+/* pages/user/index.wxss */
+page {
+  background-color: #EDEDED;
+}
+
+.user_info_wrap {
+  height: 60vmin;
+  background-color: var(--themeColor);
+  position: relative;
+}
+
+.user_info_wrap .user_img_wrap .user_bg {
+  height: 60vmin;
+  filter: blur(5px);
+}
+
+.user_info_wrap .user_img_wrap .user_info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  text-align: center;
+}
+
+.user_info_wrap .user_img_wrap .user_info .user_icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: solid 1px #CCC;
+}
+
+.user_info_wrap .user_img_wrap .user_info .user_name {
+  color: #FFF;
+  margin-top: 20px;
+  text-shadow: 0 0 3px #000;
+  font-size: 18px;
+}
+
+.user_info_wrap .user_btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40%;
+  border: solid 1px greenyellow;
+  color: greenyellow;
+  padding: 10px;
+}
+
+.menu_content {
+  position: relative;
+  margin-top: 40rpx;
+  border-radius: 4rem;
+}
+
+.menu_content .main {
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -20px;
+  padding-bottom: 20px;
+}
+
+.menu_content .main .history_wrap {
+  background-color: #FFF;
+  display: flex;
+}
+
+.menu_content .main .history_wrap .navi {
+  flex: 1;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.menu_content .main .history_wrap .navi .his_num {
+  color: var(--themeColor);
+}
+
+.menu_content .main .order_wrap {
+  background-color: #FFF;
+  margin-top: 20px;
+
+}
+
+
+.menu_content .main .order_wrap .title {
+  padding: 10px;
+  border-bottom: solid 1px #EDEDED;
+}
+
+.menu_content .main .order_wrap .order_content {
+  display: flex;
+}
+
+.menu_content .main .order_wrap .order_content .navi {
+  padding: 5px 0;
+  flex: 1;
+  text-align: center;
+}
+
+.menu_content .main .order_wrap .order_content .navi .icon {
+  background-color: var(--themeColor);
+}
+
+.menu_content .main .address_wrap {
+  background-color: #FFF;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.menu_content .main .app_wrap {
+  background-color: #FFF;
+  margin-top: 10px;
+}
+
+.menu_content .main .app_wrap .info_item {
+  padding: 10px;
+}
+
+.menu_content .main .app_wrap .info_item:not(:last-child) {
+  border-bottom: solid 1px #EDEDED;
+}
+
+.menu_content .main .app_wrap .app_contact {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 子元素两端对齐 */
+.menu_content .main .recommend_wrap {
+  background-color: #FFF;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.ddicon {
+  height: 90rpx;
+  width: 90rpx;
+}
+
+.info_item {
+  margin-bottom: 10rpx;
+}
+
+.pop {  
+  width: 100vw;  
+  height: 100vh;  
+  background-color: hsla(0, 0%, 80%, 0.8);  
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  z-index: 2;  
+  display: flex;  
+  flex-direction: column; /* 或者 row，取决于你想要的布局 */  
+  align-items: center; /* 垂直居中 */  
+  justify-content: center; /* 水平居中 */  
+}  
+.infoBox{
+  border-radius: 1rem;
+  width: 60vw;
+  height: 40vh;
+  background-color: #fff;
+}
+.tips{
+  position: absolute;
+  top: 2rem;
+  left: 20vw;
+  font-size: 25rpx;
+  color: greenyellow;
+}
+.avatar{
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}
+.weui-input{
+ border: #CCC 1px solid;
+ width: 30vw;
+}
+.shuru{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.inputInfo{
+ margin-left: 1rem;
+}
+.bindButton{
+  background-color: #1fdbae;
+  width: 35vw;
+  height: 5vh;
+  line-height: 40rpx;
+  margin-top: 3rem;
+  color: white;
+}

@@ -1,0 +1,56 @@
+<view class="searchbox"> <input type="text" class="searchinput" focus="true" confirm-type="search" bindconfirm="send" bindblur="blurSearch" />
+  <van-icon name="search" style=" margin-right: 10rpx;" size="50rpx" color="#ffaa42" bind:tap="changeSearch" />
+</view>
+
+<scroll-view scroll-y class="scroll">
+  <view class="outer">
+    <view wx:for="{{plArr}}" wx:key="_id" class="plbox">
+      <view class="info">
+        <image class="toux" src="{{item.authorImg}}" mode="" />
+        <view class="nameAndTime">
+          <text>{{item.authorName}}</text>
+          <text>{{item.authorTime}}</text>
+        </view>
+      </view>
+      <view class="container">
+        <view class="textinfo">
+         {{item.authorInfo}}
+        </view>
+        <view class="imgBox">
+          <image wx:for="{{item.img}}" src="{{item}}" wx:key="index" mode="" />
+        </view>
+      </view>
+      <view wx:for="{{item.plArr}}" wx:key="index" class="pl">
+        <view class="plItem">
+          <image class="pltoux" src="{{item.plImg}}"  mode="" />
+          <view class="plinfo">
+            <view class="plnameandtime">
+            <view>{{item.plName}}</view> 
+            <view>{{item.plTime}}</view>
+            </view>
+            <view class="plmessage">{{item.plContent}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="view-contain-ti">
+    <text class="text-ti" >回复</text>
+    <input class="input1" bindinput="bindKeyInput" value="{{item.comment}}" data-index="{{index}}"></input>
+    <van-button color="#1fdbae" class="vantbutton" type="primary" round bind:tap="send" data-index="{{index}}" >发送</van-button>
+    </view>
+   
+      
+    </view>
+    <!-- <view class="activeBox " wx:for="{{activeList}}" wx:key="index" data-aid="{{item._id}}" bind:tap="gotoJoin">
+       <image class="chart first-chart" src="{{item.creator.chatHead}}" mode="" />
+      <view class="title" style="font-size: 18px;">{{item.title}}</view>
+      <view class="title">
+        <text decode="{{true}}">时间:&emsp;{{item.activityDate}}</text>
+      </view>
+      <view class="title">
+        <text decode="{{true}}"> 地点:&emsp;{{item.site}}</text>
+      </view>
+      <view class="title info">{{item.introduction}}
+      </view> 
+    </view> -->
+  </view>
+</scroll-view>

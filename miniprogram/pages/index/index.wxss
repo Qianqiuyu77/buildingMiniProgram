@@ -1,0 +1,105 @@
+
+
+.mainPage {
+  height: 93vh;
+  width: 96vw;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.news {
+  background-image: url("https://7169-qianqiu-2guqlxz723dd8047-1319929279.tcb.qcloud.la/image/015fa55b117f2fa801202e60106a69.jpg%401280w_1l_2o_100sh.jpg?sign=783ba572e5cdf87ab576c987ae6bc195&t=1731256558");
+  width:100%;
+  height: 9.5rem;
+  margin-top: 0.5vh;
+  background-size:cover;
+}
+
+.hots{
+  width: 100%;
+  height: 6rem;
+  margin-top: 0.5rem;
+  flex-direction: row;
+  display: flex;
+  white-space:nowrap;
+}
+.hotsImg{
+  margin-top: 0.5rem;
+  display: inline-block;
+  margin-right: 1rem;
+  width: 10rem;
+  height: 5rem;
+  background-color:#fff;
+}
+.icons{
+  width: 92vw;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+.myIcon{
+  width: 5rem;
+  height: 4rem;
+}
+.myIcon image{
+  width: 3rem;
+  height: 3rem;
+}
+.myIcon view{
+  margin-top: -0.2rem;
+  margin-left: 20rpx;
+  font-size: 24rpx;
+}
+.container{
+  width: 100%;
+  height: 42vh;
+  border-radius: 1rem;
+}
+.article{
+  width: 100%;
+  height: 7rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+.articleImg{
+  width: 190rpx;
+  height: 180rpx;
+  border-radius: 0.5rem;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+.context{
+  display: inline-block;
+  height: 160rpx;
+  margin-left: 30rpx;
+}
+.category{
+  color:#1fdbae;
+  position: absolute;
+  top: 10rpx;
+  right: 50rpx;
+  font-size: 23rpx;
+}
+.title{
+  position: absolute;
+  top: 18rpx;
+  font-size: 30rpx;
+}
+.writer{
+  position: absolute;
+  bottom: 20rpx;
+  font-size: 22rpx;
+}
+.detail{
+  position: absolute;
+  font-size: 22rpx;
+  top: 60rpx;
+}

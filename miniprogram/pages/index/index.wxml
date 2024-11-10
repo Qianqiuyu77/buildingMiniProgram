@@ -1,0 +1,45 @@
+<van-search value="{{ searchValue }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" background="#f3f3f3" />
+<view class="mainPage">
+  <view class="news">
+  </view>
+  <scroll-view class="hots" scroll-x>
+    <view class="hotsImg" wx:for="{{hotsInfo}}" wx:key="index">
+      {{item.url}}
+    </view>
+  </scroll-view>
+  <view class="icons">
+    <view class="myIcon">
+      <image src="../../images/03-星星推荐.png" mode=""/>
+      <view>推荐</view>
+     </view>
+    <view class="myIcon"> 
+      <image src="../../images/案例库.png" mode=""/>
+      <view>案例</view>
+    </view>
+    <view class="myIcon"> 
+    <image src="../../images/科普服务.png" mode=""/>
+    <view>科普</view>
+    </view>
+    <view class="myIcon">
+    <image src="../../images/产品管理.png" mode=""/>
+    <view>产品</view>
+     </view>
+    <view class="myIcon">
+    <image src="../../images/商家.png" mode=""/>
+    <view>商家</view>
+     </view>
+  </view>
+  <scroll-view scroll-y class="container">
+    <view class="article" wx:for="{{mainInfo}}" wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}">
+      <image class="articleImg" src="{{item.imgUrl}}"  mode="" />
+      <view class="context">
+        <view class="category">{{item.category}}</view>
+        <view class="title">{{item.title}}</view>
+        <view class="intr"></view>
+        <view class="detail">{{item.introduce}}</view>
+        <view class="writer">{{item.writer}}</view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>
