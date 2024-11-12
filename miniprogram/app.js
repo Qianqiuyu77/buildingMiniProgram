@@ -2,7 +2,8 @@
 App({
   globalData: {
     Loginflag:false,
-    envParams: 'qianqiu-2guqlxz723dd8047'
+    envParams: 'qianqiu-2guqlxz723dd8047',
+    userInfo:{}
   },
   onLaunch: function () {
     if (!wx.cloud) {

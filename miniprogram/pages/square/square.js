@@ -21,51 +21,16 @@ Page({
     plArr: [],
   },
   async getPlArr(){
-    // const { data } = await models.plBox.list({
-    //   filter: {
-    //     where: {}
-    //   }
-    // });
-    // let updatedArray = data.records.map(obj => ({  
-    //   ...obj, // 展开当前对象以保留所有现有属性  
-    //   comment: '' // 添加新的属性  
-    // }));  
-    const updatedArray = [
-      {
-        authorImg: 'https://tse4-mm.cn.bing.net/th/id/OIP-C.FXEGkHbzpgrzOGs8WIf13AHaIU?rs=1&pid=ImgDetMain',
-        authorName: 'hello',
-        authorTime: '2022-01-01',
-        authorInfo: '123',
-        plarr:[{
-          plImg: 'https://tse4-mm.cn.bing.net/th/id/OIP-C.FXEGkHbzpgrzOGs8WIf13AHaIU?rs=1&pid=ImgDetMain',
-          plName: 'hello',
-          plTime: '2023-01-01',
-          plContent: '123'
-        }
-          
-        ]
-
-      },
-      {
-        authorImg: 'https://tse4-mm.cn.bing.net/th/id/OIP-C.FXEGkHbzpgrzOGs8WIf13AHaIU?rs=1&pid=ImgDetMain',
-        authorName: 'hello',
-        authorTime: '2022-01-01',
-        authorInfo: '123',
-        plArr:[{
-          plImg: 'https://tse4-mm.cn.bing.net/th/id/OIP-C.FXEGkHbzpgrzOGs8WIf13AHaIU?rs=1&pid=ImgDetMain',
-          plName: 'hello',
-          plTime: '2023-01-01',
-          plContent: '123'
-        }  
-        ],
-        img:[
-          'https://tse4-mm.cn.bing.net/th/id/OIP-C.FXEGkHbzpgrzOGs8WIf13AHaIU?rs=1&pid=ImgDetMain',
-          'https://tse4-mm.cn.bing.net/th/id/OIP-C.FXEGkHbzpgrzOGs8WIf13AHaIU?rs=1&pid=ImgDetMain',
-          'https://tse4-mm.cn.bing.net/th/id/OIP-C.FXEGkHbzpgrzOGs8WIf13AHaIU?rs=1&pid=ImgDetMain',
-        ]
-
+    const { data } = await models.plBox.list({
+      filter: {
+        where: {}
       }
-    ]
+    });
+    let updatedArray = data.records.map(obj => ({  
+      ...obj, // 展开当前对象以保留所有现有属性  
+      comment: '' // 添加新的属性  
+    }));  
+
     console.log(updatedArray);
     this.setData({
       plArr:updatedArray
@@ -85,33 +50,34 @@ async send(e){
   const plItem = this.data.plArr[index];
   const plInfo = {
     plTime: this.getCurrentDateFormatted(),
-    plName: 'Qianqiu',
+    plName: app.globalData.userInfo.name,
     plContent: plItem.comment,
-    plImg: "cloud://qianqiu-0g0iz32z36028acc.7169-qianqiu-0g0iz32z36028acc-1319929279/015fa55b117f2fa801202e60106a69.jpg@1280w_1l_2o_100sh.jpg"
+    plImg: app.globalData.userInfo.avatUrl
   };
   console.log(plItem);
   plItem.plArr.push(plInfo);
-  // const { data } = await models.plBox.update({
-  //   data: {
-  //       img: plItem.img,  // 图片
-  //       authorInfo: plItem.authorInfo,  // authorInfo
-  //       authorImg: plItem.authorImg,  // authorImg
-  //       authorName: plItem.authorName,  // authorName
-  //       plArr: plItem.plArr,  // 评论
-  //       authorTime: "文本",  // authorTime
-  //     },
-  //   filter: {
-  //     where: {
-  //       $and: [
-  //         {
-  //           _id: {
-  //             $eq: plItem._id, // 推荐传入_id数据标识进行操作
-  //           },
-  //         },
-  //       ]
-  //     }
-  //   },
-  // });
+  const { data } = await models.plBox.update({
+    data: {
+        img: plItem.img,  // 图片
+        authorInfo: plItem.authorInfo,  // authorInfo
+        authorImg: plItem.authorImg,  // authorImg
+        authorName: plItem.authorName,  // authorName
+        plArr: plItem.plArr,  // 评论
+        authorTime: "文本",  // authorTime
+      },
+    filter: {
+      where: {
+        $and: [
+          {
+            _id: {
+              $eq: plItem._id, // 推荐传入_id数据标识进行操作
+            },
+          },
+        ]
+      }
+    },
+  });
+  console.log(data);
   var checked = "plArr["+index+"]";
   var checkedCommit = "plArr["+index+"].comment";
   this.setData({
@@ -135,6 +101,11 @@ async send(e){
   // 使用模板字符串格式化日期  
   return `${year}-${month}-${day}`;  
 },
+gotoSendSquare(){
+  wx.navigateTo({
+    url: '/pages/sendSquare/sendSquare',
+  })
+},
   async onLoad(options) {
     await this.getPlArr();
     
@@ -151,11 +122,12 @@ async send(e){
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  async onShow () {
+    await this.getPlArr();
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 0
-      })
+        selected: 2  // 当前页面索引
+      });
     }
   },
 

@@ -4,14 +4,15 @@
     "pages/design/design",
     "pages/square/square",
     "pages/myinfo/myinfo",
-    "pages/outer/outer"
+    "pages/outer/outer",
+    "pages/sendSquare/sendSquare"
   ],
   "window": {
     "backgroundColor": "#1fdbae",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#1fdbae",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "设计师",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
@@ -19,30 +20,31 @@
     "color": "#A2A9B0",
     "selectedColor": "#1fdbae",
     "backgroundColor": "#ffffff",
+    "custom": true,
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/房子首页主页 (1).png",
-        "selectedIconPath": "images/房子首页主页.png"
+        "iconPath": "images/1.png",
+        "selectedIconPath": "images/1.png"
       },
       {
         "pagePath": "pages/design/design",
         "text": "设计",
-        "iconPath": "images/编辑撰写 (1).png",
-        "selectedIconPath": "images/编辑撰写.png"
+        "iconPath": "images/2.png",
+        "selectedIconPath": "images/2.png"
       },
       {
         "pagePath": "pages/square/square",
         "text": "广场",
-        "iconPath": "images/红旗 (1).png",
-        "selectedIconPath": "images/红旗.png"
+        "iconPath": "images/3.png",
+        "selectedIconPath": "images/3.png"
       },
       {
         "pagePath": "pages/myinfo/myinfo",
         "text": "我的",
-        "iconPath": "images/帐户 (1).png",
-        "selectedIconPath": "images/帐户.png"
+        "iconPath": "images/4.png",
+        "selectedIconPath": "images/4.png"
       }
     ]
   }

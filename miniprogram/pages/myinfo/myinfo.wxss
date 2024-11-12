@@ -1,137 +1,67 @@
 /* pages/myinfo/myinfo.wxss */
 /* pages/user/index.wxss */
 page {
-  background-color: #EDEDED;
+  background-color: #ffffff;
 }
 
-.user_info_wrap {
-  height: 60vmin;
-  background-color: var(--themeColor);
-  position: relative;
+.user_info_wrap{
+  padding-top: 90rpx;
+  width: 100%;
+  display: flex;
+  height: 20vh;
+  justify-content: center;
 }
 
-.user_info_wrap .user_img_wrap .user_bg {
-  height: 60vmin;
-  filter: blur(5px);
+
+.user_info{
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
 }
 
-.user_info_wrap .user_img_wrap .user_info {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 30%;
-  text-align: center;
-}
-
-.user_info_wrap .user_img_wrap .user_info .user_icon {
-  width: 100px;
-  height: 100px;
+.user_icon{
+  margin-left: 30rpx;
+  object-fit: cover; /* 确保图片裁剪并保持比例 */
+  width: 150rpx;
+  height: 150rpx; 
   border-radius: 50%;
-  border: solid 1px #CCC;
 }
 
-.user_info_wrap .user_img_wrap .user_info .user_name {
-  color: #FFF;
-  margin-top: 20px;
-  text-shadow: 0 0 3px #000;
-  font-size: 18px;
+.user_name{
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-left: 100rpx;
 }
-
-.user_info_wrap .user_btn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 40%;
-  border: solid 1px greenyellow;
-  color: greenyellow;
-  padding: 10px;
+.menu_content{
+  border-top-left-radius: 60rpx;
+  border-top-right-radius: 60rpx; 
+  padding-top: 20rpx;
+  background: linear-gradient(#aed5f7, #f8e6ad); /* 默认从上到下渐变 */
+  width: 95%;
+  margin: 0 auto;
+  height: 916rpx;
 }
-
-.menu_content {
-  position: relative;
-  margin-top: 40rpx;
-  border-radius: 4rem;
+.order_wrap{
+  margin: 0 auto;
+  width: 85%;
 }
-
-.menu_content .main {
-  position: absolute;
-  width: 90%;
-  left: 50%;
-  transform: translateX(-50%);
-  top: -20px;
-  padding-bottom: 20px;
-}
-
-.menu_content .main .history_wrap {
-  background-color: #FFF;
+.order_content{
   display: flex;
-}
-
-.menu_content .main .history_wrap .navi {
-  flex: 1;
-  text-align: center;
-  padding: 5px 0;
-}
-
-.menu_content .main .history_wrap .navi .his_num {
-  color: var(--themeColor);
-}
-
-.menu_content .main .order_wrap {
-  background-color: #FFF;
-  margin-top: 20px;
-
-}
-
-
-.menu_content .main .order_wrap .title {
-  padding: 10px;
-  border-bottom: solid 1px #EDEDED;
-}
-
-.menu_content .main .order_wrap .order_content {
-  display: flex;
-}
-
-.menu_content .main .order_wrap .order_content .navi {
-  padding: 5px 0;
-  flex: 1;
-  text-align: center;
-}
-
-.menu_content .main .order_wrap .order_content .navi .icon {
-  background-color: var(--themeColor);
-}
-
-.menu_content .main .address_wrap {
-  background-color: #FFF;
-  margin-top: 10px;
-  padding: 10px;
-}
-
-.menu_content .main .app_wrap {
-  background-color: #FFF;
-  margin-top: 10px;
-}
-
-.menu_content .main .app_wrap .info_item {
-  padding: 10px;
-}
-
-.menu_content .main .app_wrap .info_item:not(:last-child) {
-  border-bottom: solid 1px #EDEDED;
-}
-
-.menu_content .main .app_wrap .app_contact {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
+.navi{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-/* 子元素两端对齐 */
-.menu_content .main .recommend_wrap {
-  background-color: #FFF;
-  margin-top: 10px;
-  padding: 10px;
+.order_name{
+  font-size: 26rpx;
+  margin-right: 7rpx;
 }
 
 .ddicon {
@@ -139,8 +69,22 @@ page {
   width: 90rpx;
 }
 
+.app_wrap{
+  margin: 0 auto;
+  margin-top: 30rpx;
+  width: 85%;
+
+}
+
 .info_item {
+  background-color: #eef5f5;
+  height: 70rpx;
+  border-radius: 15rpx;
+  padding-left: 20rpx;
   margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.3); 
 }
 
 .pop {  

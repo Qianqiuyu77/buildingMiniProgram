@@ -122,3 +122,21 @@
   margin: -10rpx;
 }
 
+.addPlIcon{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 100rpx;
+ color: white;
+ position: fixed;
+ border-radius: 50%;
+ bottom: 180rpx;
+ right: 100rpx;
+ width: 100rpx;
+ height: 100rpx;
+ background-color:#1fdbae;
+}
+.icontext{
+  margin-bottom: 20rpx;
+}
+

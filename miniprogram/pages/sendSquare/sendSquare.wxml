@@ -1,0 +1,20 @@
+<view class="container">
+  <button class="submit-btn" bindtap="onSubmit">发表</button>
+  <view class="input-group">
+    <textarea placeholder="这一刻的想法..." bindinput="onInputChange" data-field="authorInfo" maxlength="500"></textarea>
+  </view>
+    <view class="img-list">
+      <block wx:for="{{img}}" wx:key="*this">
+        <view class="img-container">
+          <image src="{{item}}" class="img-preview"></image>
+          <view class="delete-icon" bindtap="onDeleteImage" data-index="{{index}}">✖</view>
+        </view>
+      </block>
+      <view wx:if="{{img.length < 9}}" class="add-img" bindtap="onChooseImage">
+        <text>+</text>
+      </view>
+    </view>
+
+
+
+</view>

@@ -9,7 +9,6 @@ var app = getApp()
   const client = init(wx.cloud)
 
   const models = client.models
-const app=getApp()
 Page({
 
   /**
@@ -30,23 +29,6 @@ Page({
       tempName:e.detail.value
     })
   },
-  async signIn(){
-    if(this.data.tempName===""){
-      wx.showToast({
-        title: '昵称不得为空',
-        icon:'error'
-      })
-      return;
-    }
-    await this.createUserInfo(this.data.tempName,this.data.tempUrl);
-    this.setData({
-      backUrl:this.data.tempUrl,
-      avatUrl:this.data.tempUrl,
-      name:this.data.tempName,
-      show:false,
-      hasUserInfo:true
-    })
-  },
   async onChooseAvatar(e) {
     console.log(e);
     const { avatarUrl } = e.detail 
@@ -63,7 +45,7 @@ Page({
   },
 
   async createUserInfo(name,url){
-    console.log(name,url);
+    console.log(name,url,this.data.openid);
     const { data } = await models.userInfo.create({
       data: {
         userId: this.data.openid,  // openid
@@ -76,35 +58,80 @@ Page({
     // console.log(data);
     // { id: "7d8ff72c665eb6c30243b6313aa8539e"}
   },
-  async getUserInfo(){
+  async getUserInfo() {
+    const cachedUserInfo = wx.getStorageSync('userInfo'); // 获取缓存
+    console.log(cachedUserInfo);
+    if (cachedUserInfo) {
+      this.setData({
+        avatUrl: cachedUserInfo.avatUrl,
+        backUrl: cachedUserInfo.avatUrl,
+        name: cachedUserInfo.name,
+        hasUserInfo: true
+      });
+      app.globalData.userInfo = cachedUserInfo; // 使用缓存的数据
+      return;
+    }
+  
+    // 如果没有缓存，则从云端获取
     const { data } = await models.userInfo.get({
       filter: {
         where: {
           $and: [
             {
               userId: {
-                $eq: this.data.openid, // 推荐传入_id数据标识进行操作
+                $eq: this.data.openid,
               },
             },
           ]
         }
       },
     });
-    console.log(data);
-    if(Object.keys(data).length === 0 && data.constructor === Object){
-      this.setData({
-        show:true
-      })
-    }else{
-      this.setData({
-        avatUrl:data.url,
-        backUrl:data.url,
-        name:data.name,
-        hasUserInfo:true
-      })
-    }
   
-    
+    if (Object.keys(data).length === 0 && data.constructor === Object) {
+      this.setData({
+        show: true
+      });
+    } else {
+      this.setData({
+        avatUrl: data.url,
+        backUrl: data.url,
+        name: data.name,
+        hasUserInfo: true
+      });
+      const userInfo = {
+        avatUrl: data.url,
+        name: data.name,
+        openid: this.data.openid
+      };
+      app.globalData.userInfo = userInfo;
+      wx.setStorageSync('userInfo', userInfo); // 缓存数据
+    }
+  },
+  
+  async signIn() {
+    if (this.data.tempName === "") {
+      wx.showToast({
+        title: '昵称不得为空',
+        icon: 'error'
+      });
+      return;
+    }
+    await this.createUserInfo(this.data.tempName, this.data.tempUrl);
+    const newUserInfo = {
+      avatUrl: this.data.tempUrl,
+      name: this.data.tempName,
+      openid: this.data.openid
+    };
+    this.setData({
+      backUrl: this.data.tempUrl,
+      avatUrl: this.data.tempUrl,
+      name: this.data.tempName,
+      show: false,
+      hasUserInfo: true
+    });
+    app.globalData.userInfo = newUserInfo;
+    wx.setStorageSync('userInfo', newUserInfo); // 更新缓存
+    console.log(app.globalData.userInfo);
   },
 
   jump0(){
@@ -139,13 +166,10 @@ Page({
     })
   },
   async getOpenId(){
-    await wx.cloud.callFunction({
-      name: 'cloudbase_module',
-      data: {
-        name: 'wx_user_get_open_id',
-      },
+    wx.cloud.callFunction({
+      name: 'getOpenId',
     }).then(res=>{
-      const openId = res.result?.openId;
+      const openId = res.result?.openid;
       wx.setStorageSync('openid',openId)
       this.setData({
         openid: openId
@@ -157,6 +181,7 @@ Page({
    */
   async onLoad(options) {
     await this.getOpenId()
+    await this.getUserInfo()
   },
   onLaunch: function () {
   },
@@ -171,6 +196,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 3  // 当前页面索引
+      });
+    }
   },
 
   /**

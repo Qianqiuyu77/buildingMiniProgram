@@ -8,6 +8,20 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/myinfo/myinfo",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/sendSquare/sendSquare",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/square/square",
           "query": "",
           "launchMode": "default",

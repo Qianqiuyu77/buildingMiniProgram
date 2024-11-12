@@ -54,3 +54,6 @@
     </view> -->
   </view>
 </scroll-view>
+<View class="addPlIcon">
+<text class="icontext" bind:tap="gotoSendSquare">+</text>
+</View>
