@@ -1,13 +1,72 @@
-<van-search value="{{ searchValue }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" background="#f3f3f3" />
-<view class="mainPage">
-  <view class="news">
+<view class="topContainer">
+  <image class="logo" src="../../images/logo(1).png" />
+  <view class="custom-search">
+    <input type="text" />
+    <image class="search-icon" src="../../images/10.png" />
   </view>
-  <scroll-view class="hots" scroll-x>
+</view>
+<view class="mainPage">
+  <view class="leftPage">
+    <view bind:tap="handleIndex" data-category="推荐" class="modleBox" style="height: 300rpx; background: linear-gradient(#ebf4f8, #f1f6f2)">
+      <view class="ModleText">
+        <view class="ModleTitle">推荐</view>
+        <view class="ModleEnglish"> Recommend</view>
+      </view>
+      <image class="modleIcon" src="../../images/5.png" />
+      <image class="womanImg" src="../../images/18919_color.png" />
+    </view>
+    <view bind:tap="handleIndex" data-category="产品" class="modleBox" style="height: 400rpx; background: linear-gradient(#eaf0e7, #f8f4da)">
+      <image class="modleIcon" src="../../images/7.png" />
+      <view class="quarterCircle" style="background-color: #d7e5e2; height: 140rpx; width: 180rpx;  border-top-right-radius: 450rpx; "></view>
+      <view class="rightTopquarterCircle"></view>
+      <view class="CenterText">
+        <view class="CenterTitle">产品</view>
+        <view class="CenterEnglish">Product</view>
+      </view>
+    </view>
+    <view bind:tap="handleIndex" data-category="商家" class="modleBox" style="height: 350rpx;background: linear-gradient(#faf5d8, #fceed6)">
+      <image class="modleIcon" src="../../images/9.png" />
+      <view class="leftTopquarterCircle"></view>
+      <view class="ModleText" style=" top: 245rpx; left: 25rpx;">
+        <view class="ModleTitle">商家</view>
+        <view class="ModleEnglish"> Merchant</view>
+      </view>
+    </view>
+  </view>
+  <view class="rightPage">
+    <view bind:tap="handleIndex" data-category="科普" class="modleBox" style="height: 400rpx;  background: linear-gradient(#e9f0e9, #e9f0e9)">
+      <image class="modleIcon" src="../../images/6.png" />
+      <view class="quarterCircle"></view>
+      <view class="ModleText" style=" top: 175rpx; left: 210rpx;">
+        <view class="ScienceTitle" style="margin-left: -13rpx;">
+          <text style="font-size: 38rpx;">科</text>普
+        </view>
+        <view class="ModleEnglish"> PopSci</view>
+      </view>
+    </view>
+    <view bind:tap="handleIndex" data-category="案例" class="modleBox" style="height: 400rpx;  background: linear-gradient(#eff2e3, #fcf5d6)">
+      <image class="modleIcon" src="../../images/8.png" />
+      <image class="caseImg" src="../../images/16169_color.png" />
+      <view class="ModleText">
+        <view class="ModleTitle">案例</view>
+        <view class="ModleEnglish"> Case</view>
+      </view>
+    </view>
+    <view bind:tap="handleIndex" data-category="敬请期待" class="tiltedBox">
+      <view class="CenterText">
+        <view class="CenterTitle" style="font-size: 25rpx;">敬请期待......</view>
+        <view class="CenterEnglish" style="padding-left: 27rpx;">Coming soon...</view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="news">
+  </view> -->
+  <!-- <scroll-view class="hots" scroll-x>
     <view class="hotsImg" wx:for="{{hotsInfo}}" wx:key="index">
       {{item.url}}
     </view>
-  </scroll-view>
-  <view class="icons">
+  </scroll-view> -->
+  <!-- <view class="icons">
     <view class="myIcon">
       <image src="../../images/03-星星推荐.png" mode=""/>
       <view>推荐</view>
@@ -28,8 +87,8 @@
     <image src="../../images/商家.png" mode=""/>
     <view>商家</view>
      </view>
-  </view>
-  <scroll-view scroll-y class="container">
+  </view> -->
+  <!-- <scroll-view scroll-y class="container">
     <view class="article" wx:for="{{mainInfo}}" wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}">
       <image class="articleImg" src="{{item.imgUrl}}"  mode="" />
       <view class="context">
@@ -41,5 +100,5 @@
       </view>
 
     </view>
-  </scroll-view>
+  </scroll-view> -->
 </view>

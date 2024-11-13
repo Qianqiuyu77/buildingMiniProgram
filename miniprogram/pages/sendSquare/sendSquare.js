@@ -38,17 +38,20 @@ Page({
   getCurrentDateFormatted() {  
     // 创建一个Date对象表示当前时间  
     const now = new Date();  
-    
-    // 获取年、月、日  
-    // 注意：getMonth()返回的月份是从0开始的，所以要加1  
-    // getDate()和getFullYear()直接返回我们需要的值  
+  
+    // 获取年、月、日
     const year = now.getFullYear();  
     const month = String(now.getMonth() + 1).padStart(2, '0'); // 填充为两位数  
     const day = String(now.getDate()).padStart(2, '0'); // 填充为两位数  
-    
-    // 使用模板字符串格式化日期  
-    return `${year}-${month}-${day}`;  
+  
+    // 获取小时和分钟
+    const hours = String(now.getHours()).padStart(2, '0'); // 填充为两位数  
+    const minutes = String(now.getMinutes()).padStart(2, '0'); // 填充为两位数  
+  
+    // 使用模板字符串格式化日期和时间，中间用空格分隔
+    return `${year}-${month}-${day} ${hours}:${minutes}`;  
   },
+  
 
   async onSubmit() {
     const { authorInfo, img } = this.data;
@@ -87,4 +90,6 @@ Page({
     img.splice(index, 1);
     this.setData({ img });
   },
+
+  
 });

@@ -1,5 +1,11 @@
-<view class="searchbox"> <input type="text" class="searchinput" focus="true" confirm-type="search" bindconfirm="send" bindblur="blurSearch" />
+<!-- <view class="searchbox"> <input type="text" class="searchinput" focus="true" confirm-type="search" bindconfirm="send" bindblur="blurSearch" />
   <van-icon name="search" style=" margin-right: 10rpx;" size="50rpx" color="#ffaa42" bind:tap="changeSearch" />
+</view> -->
+<view class="topContainer">
+  <view class="custom-search">
+    <input type="text" />
+    <image class="search-icon" src="../../images/10.png" />
+  </view>
 </view>
 
 <scroll-view scroll-y class="scroll">
@@ -8,37 +14,42 @@
       <view class="info">
         <image class="toux" src="{{item.authorImg}}" mode="" />
         <view class="nameAndTime">
-          <text>{{item.authorName}}</text>
+          <text style="font-size: 30rpx; font-weight: 600; margin-bottom: 10rpx;">{{item.authorName}}</text>
           <text>{{item.authorTime}}</text>
         </view>
       </view>
       <view class="container">
         <view class="textinfo">
-         {{item.authorInfo}}
+          {{item.authorInfo}}
         </view>
-        <view class="imgBox">
-          <image wx:for="{{item.img}}" src="{{item}}" wx:key="index" mode="" />
+        <view class="imgContainer">
+          <view class="imgBox">
+            <image class="imgItem" wx:for="{{item.img}}" src="{{item}}" wx:key="index" mode="" />
+          </view>
         </view>
+
       </view>
-      <view wx:for="{{item.plArr}}" wx:key="index" class="pl">
-        <view class="plItem">
-          <image class="pltoux" src="{{item.plImg}}"  mode="" />
-          <view class="plinfo">
-            <view class="plnameandtime">
-            <view>{{item.plName}}</view> 
-            <view>{{item.plTime}}</view>
+      <view class="pl">
+        <view wx:for="{{item.plArr}}" wx:key="index">
+          <view class="plItem">
+            <image class="pltoux" src="{{item.plImg}}" mode="" />
+            <view class="plinfo">
+              <view class="plnameandtime">
+                <view>{{item.plName}}:</view>
+                <!-- <view>{{item.plTime}}</view> -->
+              </view>
+              <view class="plmessage">{{item.plContent}}</view>
             </view>
-            <view class="plmessage">{{item.plContent}}</view>
           </view>
         </view>
       </view>
       <view class="view-contain-ti">
-    <text class="text-ti" >回复</text>
-    <input class="input1" bindinput="bindKeyInput" value="{{item.comment}}" data-index="{{index}}"></input>
-    <van-button color="#1fdbae" class="vantbutton" type="primary" round bind:tap="send" data-index="{{index}}" >发送</van-button>
-    </view>
-   
-      
+        <text class="text-ti">评论：</text>
+        <input class="input1" bindinput="bindKeyInput" value="{{item.comment}}" data-index="{{index}}"></input>
+        <view class="vantbutton" bind:tap="send" data-index="{{index}}">发送</view>
+      </view>
+
+
     </view>
     <!-- <view class="activeBox " wx:for="{{activeList}}" wx:key="index" data-aid="{{item._id}}" bind:tap="gotoJoin">
        <image class="chart first-chart" src="{{item.creator.chatHead}}" mode="" />
@@ -55,5 +66,5 @@
   </view>
 </scroll-view>
 <View class="addPlIcon">
-<text class="icontext" bind:tap="gotoSendSquare">+</text>
+  <text class="icontext" bind:tap="gotoSendSquare">+</text>
 </View>

@@ -1,8 +1,8 @@
 {
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#aed5f7",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
-    "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-button": "@vant/weapp/button/index"
   }
 }

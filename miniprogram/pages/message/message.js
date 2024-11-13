@@ -6,6 +6,7 @@ var app = getApp()
   })
 
   const client = init(wx.cloud)
+
   const models = client.models
 Page({
 
@@ -13,19 +14,46 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchValue:'',
+    mainInfo:[],
+    category: ''
   },
-
-  handleIndex(e){
-    console.log(e.currentTarget.dataset.category);
-    const category =  e.currentTarget.dataset.category;
+  async getMainInfo(){
+    const { data } = await models.message.list({
+      filter: {
+        where: {}
+      },
+      pageSize: 10, // 分页大小，建议指定，如需设置为其它值，需要和 pageNumber 配合使用，两者同时指定才会生效
+      pageNumber: 1, // 第几页
+      getCount: true, // 开启用来获取总数
+    });
+    this.setData({
+      mainInfo:data.records
+    })
+  
+    // 返回查询到的数据列表 records 和 总数 total
+    console.log(data);
+    // {
+    //   "records": [{...},{...}],
+    //   "total": 51
+    // }
+  },
+  goToMessage(e){
+    console.log(e.currentTarget.dataset.url);
     wx.navigateTo({
-      url: '/pages/message/message?category='+category,
+      url: '/pages/outer/outer?url='+e.currentTarget.dataset.url,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData(
+      {
+        category: options.category
+      }
+    )
+    this.getMainInfo()
   },
 
   /**
@@ -39,11 +67,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0  // 当前页面索引
-      });
-    }
+  
   },
 
   /**

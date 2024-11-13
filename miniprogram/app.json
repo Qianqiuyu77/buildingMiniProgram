@@ -4,6 +4,7 @@
     "pages/design/design",
     "pages/square/square",
     "pages/myinfo/myinfo",
+    "pages/message/message",
     "pages/outer/outer",
     "pages/sendSquare/sendSquare"
   ],

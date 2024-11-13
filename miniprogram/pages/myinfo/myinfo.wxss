@@ -14,7 +14,7 @@ page {
 
 
 .user_info{
-  width: 70%;
+  width: 85%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,10 +22,10 @@ page {
 }
 
 .user_icon{
-  margin-left: 30rpx;
+  margin-left: 100rpx;
   object-fit: cover; /* 确保图片裁剪并保持比例 */
-  width: 150rpx;
-  height: 150rpx; 
+  width: 170rpx;
+  height: 170rpx; 
   border-radius: 50%;
 }
 
@@ -38,8 +38,8 @@ page {
   border-top-left-radius: 60rpx;
   border-top-right-radius: 60rpx; 
   padding-top: 20rpx;
-  background: linear-gradient(#aed5f7, #f8e6ad); /* 默认从上到下渐变 */
-  width: 95%;
+  background: linear-gradient(#aed5f7, #f1e4b4); /* 默认从上到下渐变 */
+  width: 100%;
   margin: 0 auto;
   height: 916rpx;
 }

@@ -181,7 +181,7 @@ Page({
    */
   async onLoad(options) {
     await this.getOpenId()
-    await this.getUserInfo()
+    // await this.getUserInfo()
   },
   onLaunch: function () {
   },

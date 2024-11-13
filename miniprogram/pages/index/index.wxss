@@ -1,105 +1,196 @@
 
+page{
+  background: linear-gradient(#aed5f7, #f8e6ad); /* 默认从上到下渐变 */
+}
+
+.topContainer{
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+}
+
+.logo{
+width: 85rpx;
+height: 90rpx;
+margin-left: 50rpx;
+}
 
 .mainPage {
-  height: 93vh;
-  width: 96vw;
-  margin: auto;
+  height: 92vh;
+  width: 85vw;
+  margin: 30rpx auto 0;
+  display: flex;
+  lign-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.leftPage{
+  width: 48.5%;
+  height: 100%;
+}
+
+.rightPage{
+  padding-top: 20rpx;
+  width: 48.5%;
+  height: 100%;
+}
+
+.modleBox{
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  height: 20rpx;
+  margin-bottom: 35rpx;
+  border-radius: 30rpx;
+  box-shadow: -2rpx 10rpx 20rpx rgba(0, 0, 0, 0.1), 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
 }
 
-.news {
-  background-image: url("https://7169-qianqiu-2guqlxz723dd8047-1319929279.tcb.qcloud.la/image/015fa55b117f2fa801202e60106a69.jpg%401280w_1l_2o_100sh.jpg?sign=783ba572e5cdf87ab576c987ae6bc195&t=1731256558");
-  width:100%;
-  height: 9.5rem;
-  margin-top: 0.5vh;
-  background-size:cover;
+.quarterCircle {
+  position: absolute;
+  bottom: 0; /* 放置在左下角 */
+  left: 0; /* 放置在左边 */
+  width: 120rpx; /* 圆的半径 */
+  height: 120rpx; /* 圆的半径 */
+  background-color: #f8f5da; /* 圆的颜色，可以根据需要调整 */
+  border-top-right-radius: 100rpx; /* 创建四分之一圆 */
 }
 
-.hots{
-  width: 100%;
-  height: 6rem;
-  margin-top: 0.5rem;
-  flex-direction: row;
+.leftTopquarterCircle {
+  position: absolute;
+  top: 0; /* 放置在左下角 */
+  left: 0; /* 放置在左边 */
+  width: 180rpx; /* 圆的半径 */
+  height: 240rpx; /* 圆的半径 */
+  background-color: #dae6e0; /* 圆的颜色，可以根据需要调整 */
+  border-bottom-right-radius: 180rpx; /* 创建四分之一圆 */
+}
+
+.rightTopquarterCircle {
+  position: absolute;
+  top: 0; /* 放置在左下角 */
+  right: 0; /* 放置在左边 */
+  width: 120rpx; /* 圆的半径 */
+  height: 120rpx; /* 圆的半径 */
+  background-color: #f8f5da; /* 圆的颜色，可以根据需要调整 */
+  border-bottom-left-radius: 100rpx; /* 创建四分之一圆 */
+}
+
+
+
+.tiltedBox {
+  width: 260rpx;
+  height: 260rpx;
+  background-color: #fff;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  border-radius: 30rpx;
+  transform: rotate(15deg); /* 顺时针旋转 30 度 */
+  transform-origin: center; /* 设置旋转的中心点 */
+  background-color: #c8d8cd;
+  box-shadow: -2rpx 10rpx 20rpx rgba(0, 0, 0, 0.1), 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.1);
   display: flex;
-  white-space:nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.hotsImg{
-  margin-top: 0.5rem;
-  display: inline-block;
-  margin-right: 1rem;
-  width: 10rem;
-  height: 5rem;
-  background-color:#fff;
+
+.modleIcon {
+  position: absolute;
+  top: 15rpx;
+  left: 15rpx;
+  width: 100rpx;
+  height: 100rpx;
+  z-index: 3;
 }
-.icons{
-  width: 92vw;
-  height: 6rem;
+
+.womanImg{
+  position: absolute;
+  bottom: -20rpx;
+  left: 85rpx;
+  width: 150rpx;
+  height: 130rpx;
+  object-fit: contain; /* 确保图片缩放时不变形 */
+}
+
+.caseImg {
+  position: absolute;
+  bottom: 5rpx;
+  left: 50rpx;
+  width: 230rpx;
+  height: 180rpx;
+  object-fit: contain; /* 确保图片缩放时不变形 */
+}
+
+.ModleText{
+  font-weight: 400;
+  position: absolute;
+  top: 25rpx;
+  left: 130rpx;
+}
+ 
+.ModleTitle{
+  font-size: 28rpx;
+  text-shadow: 4rpx 4rpx 6rpx rgba(0, 0, 0, 0.5); /* 更大的阴影和更深的颜色 */
+}
+
+.ModleEnglish{
+  font-size: 23rpx;
+  text-shadow: 3rpx 3rpx 5rpx rgba(0, 0, 0, 0.4); /* 适度增强阴影效果 */
+}
+
+.CenterText{
+  font-weight: 500;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  padding-left: 1rem;
-  margin-bottom: 0.5rem;
 }
-.myIcon{
-  width: 5rem;
-  height: 4rem;
+ 
+.CenterTitle {
+  font-size: 36rpx;
+  text-shadow: 4rpx 4rpx 6rpx rgba(0, 0, 0, 0.5); /* 更大的阴影和更深的颜色 */
 }
-.myIcon image{
-  width: 3rem;
-  height: 3rem;
-}
-.myIcon view{
-  margin-top: -0.2rem;
-  margin-left: 20rpx;
-  font-size: 24rpx;
-}
-.container{
-  width: 100%;
-  height: 42vh;
-  border-radius: 1rem;
-}
-.article{
-  width: 100%;
-  height: 7rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  margin-bottom: 0.5rem;
-  position: relative;
-}
-.articleImg{
-  width: 190rpx;
-  height: 180rpx;
-  border-radius: 0.5rem;
-  margin-top: 20rpx;
-  margin-left: 20rpx;
-}
-.context{
-  display: inline-block;
-  height: 160rpx;
-  margin-left: 30rpx;
-}
-.category{
-  color:#1fdbae;
-  position: absolute;
-  top: 10rpx;
-  right: 50rpx;
+
+.CenterEnglish {
   font-size: 23rpx;
+  text-shadow: 3rpx 3rpx 5rpx rgba(0, 0, 0, 0.4); /* 适度增强阴影效果 */
 }
-.title{
+
+.ScienceTitle{
+  font-size: 28rpx;
+  text-shadow: 4rpx 4rpx 6rpx rgba(0, 0, 0, 0.5); /* 更大的阴影和更深的颜色 */
+}
+
+/* 搜索框 */
+.custom-search {
+  position: relative;
+  width: 100%;
+  max-width: 450rpx;
+  margin: 10px auto;
+  background-color: #dbebf7;
+  border-radius: 25px;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  box-shadow: -2rpx 10rpx 20rpx rgba(0, 0, 0, 0.1), 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.custom-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 16px;
+}
+
+.search-icon {
   position: absolute;
-  top: 18rpx;
-  font-size: 30rpx;
+  right: 15px;
+  width: 90rpx;
+  height: 90rpx;
 }
-.writer{
-  position: absolute;
-  bottom: 20rpx;
-  font-size: 22rpx;
-}
-.detail{
-  position: absolute;
-  font-size: 22rpx;
-  top: 60rpx;
-}
+

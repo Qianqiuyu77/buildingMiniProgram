@@ -7,25 +7,25 @@ Component({
       {
         pagePath: "/pages/index/index",
         iconPath: "/images/1.png",
-        selectedIconPath: "/images/1.png",
+        selectedIconPath: "/images/阴影1.png",
         text: "首页"
       },
       {
         pagePath: "/pages/design/design",
         iconPath: "/images/2.png",
-        selectedIconPath: "/images/2.png",
+        selectedIconPath: "/images/阴影2.png",
         text: "设计"
       },
       {
         pagePath: "/pages/square/square",
         iconPath: "/images/3.png",
-        selectedIconPath: "/images/3.png",
+        selectedIconPath: "/images/阴影3.png",
         text: "广场"
       },
       {
         pagePath: "/pages/myinfo/myinfo",
         iconPath: "/images/4.png",
-        selectedIconPath: "/images/4.png",
+        selectedIconPath: "/images/阴影4.png",
         text: "我的"
       }
     ]

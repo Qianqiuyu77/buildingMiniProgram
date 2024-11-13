@@ -1,0 +1,16 @@
+  <view>
+  {{category}}
+  </view>
+  <scroll-view scroll-y class="container">
+    <view class="article" wx:for="{{mainInfo}}" wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}">
+      <image class="articleImg" src="{{item.imgUrl}}"  mode="" />
+      <view class="context">
+        <view class="category">{{item.category}}</view>
+        <view class="title">{{item.title}}</view>
+        <view class="intr"></view>
+        <view class="detail">{{item.introduce}}</view>
+        <view class="writer">{{item.writer}}</view>
+      </view>
+
+    </view>
+  </scroll-view>

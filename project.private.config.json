@@ -8,6 +8,20 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/message/message",
+          "query": "category=科普",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/message/message",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/myinfo/myinfo",
           "query": "",
           "launchMode": "default",

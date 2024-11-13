@@ -46,7 +46,8 @@ Page({
       console.log(this.data.plArr);
 },
 async send(e){
-  const index= e.currentTarget.dataset.index
+  if(Boolean(app.globalData.userInfo?.name)){
+    const index= e.currentTarget.dataset.index
   const plItem = this.data.plArr[index];
   const plInfo = {
     plTime: this.getCurrentDateFormatted(),
@@ -86,25 +87,43 @@ async send(e){
     console.log(this.data.plArr);
   // 返回更新成功的条数
   // { count: 1}
+  }else{
+    wx.showToast({
+      title: '请先登录',
+      icon:'error'
+    })
+  }
+  
 },
- getCurrentDateFormatted() {  
+getCurrentDateFormatted() {  
   // 创建一个Date对象表示当前时间  
   const now = new Date();  
-  
-  // 获取年、月、日  
-  // 注意：getMonth()返回的月份是从0开始的，所以要加1  
-  // getDate()和getFullYear()直接返回我们需要的值  
+
+  // 获取年、月、日
   const year = now.getFullYear();  
   const month = String(now.getMonth() + 1).padStart(2, '0'); // 填充为两位数  
   const day = String(now.getDate()).padStart(2, '0'); // 填充为两位数  
-  
-  // 使用模板字符串格式化日期  
-  return `${year}-${month}-${day}`;  
-},
+
+  // 获取小时和分钟
+  const hours = String(now.getHours()).padStart(2, '0'); // 填充为两位数  
+  const minutes = String(now.getMinutes()).padStart(2, '0'); // 填充为两位数  
+
+  // 使用模板字符串格式化日期和时间，中间用空格分隔
+  return `${year}-${month}-${day} ${hours}:${minutes}`;  
+}
+,
 gotoSendSquare(){
-  wx.navigateTo({
-    url: '/pages/sendSquare/sendSquare',
-  })
+  if(Boolean(app.globalData.userInfo?.name)){
+    wx.navigateTo({
+      url: '/pages/sendSquare/sendSquare',
+    })
+  }else{
+    wx.showToast({
+      title: '请先登录',
+      icon:'error'
+    })
+  }
+
 },
   async onLoad(options) {
     await this.getPlArr();
@@ -123,12 +142,13 @@ gotoSendSquare(){
    * 生命周期函数--监听页面显示
    */
   async onShow () {
-    await this.getPlArr();
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 2  // 当前页面索引
       });
     }
+    console.log(app.globalData);
+    await this.getPlArr();
   },
 
   /**
