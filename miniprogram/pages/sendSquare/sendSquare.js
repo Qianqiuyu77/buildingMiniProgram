@@ -49,7 +49,7 @@ Page({
     const minutes = String(now.getMinutes()).padStart(2, '0'); // 填充为两位数  
   
     // 使用模板字符串格式化日期和时间，中间用空格分隔
-    return `${year}-${month}-${day} ${hours}:${minutes}`;  
+    return `${year}-${month}-${day} ${hours}:${minutes}` || '';  
   },
   
 
@@ -57,15 +57,27 @@ Page({
     const { authorInfo, img } = this.data;
     const authorTime = this.getCurrentDateFormatted();
 
+    const trueimg = await Promise.all(img.map(async (item) => {
+      const uploadRes = await wx.cloud.uploadFile({
+        cloudPath: new Date().getTime() + 'photo.png', // 设置云存储路径
+        filePath: item, // 上传的文件路径
+      });
+      console.log(uploadRes);
+      return uploadRes.fileID; // 返回上传后的 fileID
+    }));
+    console.log(trueimg);
+
+    
     try {
       const { data } = await models.plBox.create({
         data: {
-          img,
+          img:trueimg,
           authorInfo,
           authorImg: app.globalData.userInfo.avatUrl,
           authorName: app.globalData.userInfo.name,
           plArr: [],
-          authorTime
+          authorTime,
+          loveFlag: false
         }
       });
       wx.navigateBack()

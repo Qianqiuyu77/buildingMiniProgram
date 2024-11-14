@@ -55,6 +55,24 @@
   background-color: rgba(240, 245, 243);
 }
 
+.blockLove{
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 90rpx;
+  height: 90rpx;
+  z-index: 2;
+}
+
+.fullLove{
+  position: absolute;
+  right: 30rpx;
+  top: 32rpx;
+  width: 40rpx;
+  height: 30rpx;
+  z-index: 2;
+}
+
  .info{
    margin-bottom: 10rpx;
    width: 100%;
@@ -72,12 +90,15 @@
  .container{
   width: 100%;
  }
- .textinfo{
-   margin-left: 40rpx;
-   margin-bottom: 10rpx;
-   width: 100%;
-   overflow-x:hidden;
- }
+ .textinfo {
+  margin-left: -15rpx;
+  margin-bottom: 10rpx;
+  width: 90%; /* 确保容器宽度自适应 */
+  overflow-x: hidden; /* 隐藏水平滚动 */
+  word-wrap: break-word; /* 强制长单词换行 */
+  word-break: break-all; /* 处理长单词无法自动换行时强制换行 */
+  white-space: normal; /* 确保文本在容器内换行 */
+}
  .toux{
    margin-left: 20rpx;
    margin-top: 20rpx;
@@ -139,6 +160,7 @@
   position: relative;
   display: flex;
   margin: 20rpx;
+  margin-top: 30rpx;
   border: 3rpx solid #8e8e8e;
   border-radius: 20rpx;
   width: 580rpx;
@@ -146,25 +168,25 @@
 
 .text-ti {
   font-size: 23rpx;
-  margin: 10px 0 10px 5px;
-  padding: 0 5px;
+  margin: 20rpx 0 20rpx 10rpx;
+  padding-left: 10rpx;
   color: black;
 }
 
 .input1 {
-  margin:  auto 10px;
+  margin:  auto 20rpx;
 }
 .vantbutton{
+  position: absolute;
   background-color: #8e8e8e;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   border-radius: 20rpx;
-  position:absolute;
   width: 80rpx;
-  height: 68rpx;
-  right: -3rpx;
+  height: 80rpx;
+  right: 0;
   font-size: 23rpx;
 }
 

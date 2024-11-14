@@ -7,10 +7,11 @@
     <image class="search-icon" src="../../images/10.png" />
   </view>
 </view>
-
 <scroll-view scroll-y class="scroll">
   <view class="outer">
     <view wx:for="{{plArr}}" wx:key="_id" class="plbox">
+    <image bind:tap="changeLove" data-index="{{index}}" data-love="{{false}}" wx:if="{{!item.loveFlag}}" class="blockLove" src="../../images/11.png" />
+    <image bind:tap="changeLove" data-index="{{index}}" data-love="{{true}}" wx:if="{{item.loveFlag}}" class="fullLove" src="../../images/爱心.png" />
       <view class="info">
         <image class="toux" src="{{item.authorImg}}" mode="" />
         <view class="nameAndTime">
@@ -29,14 +30,13 @@
         </view>
 
       </view>
-      <view class="pl">
+      <view wx:if="{{item.plArr.length}}" class="pl">
         <view wx:for="{{item.plArr}}" wx:key="index">
           <view class="plItem">
             <image class="pltoux" src="{{item.plImg}}" mode="" />
             <view class="plinfo">
               <view class="plnameandtime">
                 <view>{{item.plName}}:</view>
-                <!-- <view>{{item.plTime}}</view> -->
               </view>
               <view class="plmessage">{{item.plContent}}</view>
             </view>

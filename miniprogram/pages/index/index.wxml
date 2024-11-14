@@ -17,7 +17,7 @@
     </view>
     <view bind:tap="handleIndex" data-category="产品" class="modleBox" style="height: 400rpx; background: linear-gradient(#eaf0e7, #f8f4da)">
       <image class="modleIcon" src="../../images/7.png" />
-      <view class="quarterCircle" style="background-color: #d7e5e2; height: 140rpx; width: 180rpx;  border-top-right-radius: 450rpx; "></view>
+      <view class="quarterCircle" style="background-color: #d7e5e2; height: 140rpx; width: 180rpx;  border-top-right-radius: 450rpx; border-bottom-left-radius: 60rpx; "></view>
       <view class="rightTopquarterCircle"></view>
       <view class="CenterText">
         <view class="CenterTitle">产品</view>
@@ -59,46 +59,22 @@
       </view>
     </view>
   </view>
-  <!-- <view class="news">
-  </view> -->
-  <!-- <scroll-view class="hots" scroll-x>
-    <view class="hotsImg" wx:for="{{hotsInfo}}" wx:key="index">
-      {{item.url}}
-    </view>
-  </scroll-view> -->
-  <!-- <view class="icons">
-    <view class="myIcon">
-      <image src="../../images/03-星星推荐.png" mode=""/>
-      <view>推荐</view>
-     </view>
-    <view class="myIcon"> 
-      <image src="../../images/案例库.png" mode=""/>
-      <view>案例</view>
-    </view>
-    <view class="myIcon"> 
-    <image src="../../images/科普服务.png" mode=""/>
-    <view>科普</view>
-    </view>
-    <view class="myIcon">
-    <image src="../../images/产品管理.png" mode=""/>
-    <view>产品</view>
-     </view>
-    <view class="myIcon">
-    <image src="../../images/商家.png" mode=""/>
-    <view>商家</view>
-     </view>
-  </view> -->
-  <!-- <scroll-view scroll-y class="container">
-    <view class="article" wx:for="{{mainInfo}}" wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}">
-      <image class="articleImg" src="{{item.imgUrl}}"  mode="" />
-      <view class="context">
-        <view class="category">{{item.category}}</view>
-        <view class="title">{{item.title}}</view>
-        <view class="intr"></view>
-        <view class="detail">{{item.introduce}}</view>
-        <view class="writer">{{item.writer}}</view>
-      </view>
+</view>
 
+<view class="overlay" wx:if="{{isOverlayVisible}}">
+  <view class="content">
+    <!-- 关闭按钮 -->
+    <!-- 图片滑动组件 -->
+    <swiper class="swiper-container" current="{{currentIndex}}" indicator-dots="true" autoplay="false" circular="true" bindchange="onSwiperChange">
+      <swiper-item wx:for="{{images}}" wx:key="index">
+        <image class="swiper-image" src="{{item}}" mode="aspectFill"/>
+      </swiper-item>
+    </swiper>
+
+    <!-- 进度点 -->
+    <view class="progress-dots">
+      <view class="dot" wx:for="{{images}}" wx:key="index" wx:class="{{currentIndex === index ? 'active' : ''}}" />
     </view>
-  </scroll-view> -->
+  </view>
+  <button class="close-btn" bindtap="closeOverlay">X</button>
 </view>

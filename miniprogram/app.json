@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/start/start",
     "pages/index/index",
     "pages/design/design",
     "pages/square/square",
@@ -7,6 +8,7 @@
     "pages/message/message",
     "pages/outer/outer",
     "pages/sendSquare/sendSquare"
+
   ],
   "window": {
     "backgroundColor": "#1fdbae",

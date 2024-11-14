@@ -3,6 +3,17 @@
 page {
   background-color: #ffffff;
 }
+.page{
+  height: 100vh;
+}
+.pageHome{
+  width: 80%;
+  height: 100vh;
+  border: black 1px solid;
+}
+.pageStyle{
+  background: linear-gradient(#aed5f7, #f8e6ad); /* 默认从上到下渐变 */
+}
 
 .user_info_wrap{
   padding-top: 90rpx;
@@ -41,7 +52,7 @@ page {
   background: linear-gradient(#aed5f7, #f1e4b4); /* 默认从上到下渐变 */
   width: 100%;
   margin: 0 auto;
-  height: 916rpx;
+  height: 950rpx;
 }
 .order_wrap{
   margin: 0 auto;

@@ -20,22 +20,43 @@ Page({
     testImg: 'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/015fa55b117f2fa801202e60106a69.jpg@1280w_1l_2o_100sh.jpg',
     plArr: [],
   },
-  async getPlArr(){
-    const { data } = await models.plBox.list({
-      filter: {
-        where: {}
-      }
-    });
-    let updatedArray = data.records.map(obj => ({  
-      ...obj, // 展开当前对象以保留所有现有属性  
-      comment: '' // 添加新的属性  
-    }));  
-
-    console.log(updatedArray);
+  async getPlArr() {
+    let allRecords = []; // 存储所有获取到的数据
+    let currentPage = 1; // 从第一页开始
+    
+    while (true) {
+      const { data } = await models.plBox.list({
+        filter: {
+          where: {}
+        },
+        pageSize: 10, // 每次请求的记录数
+        pageNumber: currentPage, // 当前页
+        getCount: true, // 获取总数
+      });
+  
+      // 如果没有数据，退出循环
+      if (data.records.length === 0) break;
+  
+      // 对获取的数据进行处理
+      let updatedArray = data.records.map(obj => ({
+        ...obj, // 展开当前对象以保留所有现有属性  
+        comment: '' // 添加新的属性
+      }));
+  
+      // 合并当前页数据
+      allRecords = [...allRecords, ...updatedArray];
+      
+      // 页数递增，继续请求下一页
+      currentPage++;
+    }
+    allRecords.sort((a, b) => b.createdAt - a.createdAt);
+    // 更新数据状态
     this.setData({
-      plArr:updatedArray
-    })
-    console.log(this.data.plArr);
+      plArr: allRecords, // 设置所有数据
+    });
+  
+    console.log(allRecords); // 输出所有数据
+    console.log(this.data.plArr); // 输出已更新的 plArr
   },
   bindKeyInput(e){
     console.log(e);
@@ -59,12 +80,7 @@ async send(e){
   plItem.plArr.push(plInfo);
   const { data } = await models.plBox.update({
     data: {
-        img: plItem.img,  // 图片
-        authorInfo: plItem.authorInfo,  // authorInfo
-        authorImg: plItem.authorImg,  // authorImg
-        authorName: plItem.authorName,  // authorName
         plArr: plItem.plArr,  // 评论
-        authorTime: "文本",  // authorTime
       },
     filter: {
       where: {
@@ -88,12 +104,42 @@ async send(e){
   // 返回更新成功的条数
   // { count: 1}
   }else{
+    wx.switchTab({
+      url: '/pages/myinfo/myinfo',
+    })
     wx.showToast({
       title: '请先登录',
       icon:'error'
     })
   }
   
+},
+
+ async changeLove(e){
+  const index = e.currentTarget.dataset.index;
+  const love = e.currentTarget.dataset.love;
+  var checkedCommit = "plArr["+index+"].loveFlag";
+  this.setData({
+    [checkedCommit]: !love 
+  })
+
+  const plItem = this.data.plArr[index];
+  await models.plBox.update({
+    data: {
+        loveFlag: !love ,  // 评论
+      },
+    filter: {
+      where: {
+        $and: [
+          {
+            _id: {
+              $eq: plItem._id, // 推荐传入_id数据标识进行操作
+            },
+          },
+        ]
+      }
+    },
+  });
 },
 getCurrentDateFormatted() {  
   // 创建一个Date对象表示当前时间  
@@ -118,6 +164,9 @@ gotoSendSquare(){
       url: '/pages/sendSquare/sendSquare',
     })
   }else{
+    wx.switchTab({
+      url: '/pages/myinfo/myinfo',
+    })
     wx.showToast({
       title: '请先登录',
       icon:'error'

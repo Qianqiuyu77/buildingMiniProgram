@@ -4,7 +4,6 @@ var app = getApp()
   wx.cloud.init({
     env: app.globalData.envParams,
   })
-
   const client = init(wx.cloud)
   const models = client.models
 Page({
@@ -13,6 +12,28 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isOverlayVisible: true, // 控制蒙层显示与否
+    currentIndex: 0, // 当前显示的图片索引
+    images: [
+      'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/OIP-C.jpg',
+      'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/OIP-C.jpg',
+      'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/OIP-C.jpg',
+    ]
+  },
+
+   // 关闭蒙层
+   closeOverlay() {
+    this.setData({
+      isOverlayVisible: false
+    });
+  },
+
+  // 处理滑动切换图片
+  onSwiperChange(e) {
+    const index = e.detail.current;
+    this.setData({
+      currentIndex: index
+    });
   },
 
   handleIndex(e){

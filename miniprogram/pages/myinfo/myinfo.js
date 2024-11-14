@@ -64,7 +64,6 @@ Page({
     if (cachedUserInfo) {
       this.setData({
         avatUrl: cachedUserInfo.avatUrl,
-        backUrl: cachedUserInfo.avatUrl,
         name: cachedUserInfo.name,
         hasUserInfo: true
       });
@@ -163,6 +162,14 @@ Page({
       fail: function () {
         console.log("拨打电话失败！")
       }
+    })
+  },
+
+  exit(){
+    app.globalData.userInfo={}
+    this.setData({
+      avatUrl: 'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/015fa55b117f2fa801202e60106a69.jpg@1280w_1l_2o_100sh.jpg',
+      hasUserInfo: false
     })
   },
   async getOpenId(){
