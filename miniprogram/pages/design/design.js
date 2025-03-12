@@ -1,11 +1,12 @@
 // pages/design/design.js
+const app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    img:"cloud://"+app.globalData.envParams+".7169-qianqiu-2guqlxz723dd8047-1319929279/image/开屏.png",
   },
 
   /**

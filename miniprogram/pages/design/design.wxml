@@ -1,2 +1,1 @@
-<!--pages/design/design.wxml-->
-<text>pages/design/design.wxml</text>
+<image src="{{img}}" class="startImg"/>

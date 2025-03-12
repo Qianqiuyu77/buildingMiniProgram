@@ -21,7 +21,9 @@ Page({
   async getMainInfo(){
     const { data } = await models.message.list({
       filter: {
-        where: {}
+        where: {
+          
+        }
       },
       pageSize: 10, // 分页大小，建议指定，如需设置为其它值，需要和 pageNumber 配合使用，两者同时指定才会生效
       pageNumber: 1, // 第几页

@@ -27,7 +27,6 @@
 </view>
 <view wx:if="{{hasUserInfo}}" class="menu_content">
   <view class="main" >
-    <!-- 我的订单 -->
     <view class="order_wrap">
       <view class="order_content">
         <view class="navi" bindtap="jump0">

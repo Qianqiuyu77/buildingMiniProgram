@@ -15,15 +15,20 @@ Page({
     authorName: '', // 作者名字
     plArr: [],      // 评论信息
     img: [],        // 图片列表
-    authorTime: ''  // 发表时间
+    authorTime: '' , // 发表时间
+    bindtapFlag: false
   },
 
   onInputChange(e) {
+  
+    // 获取字段并更新值
     const { field } = e.currentTarget.dataset;
     this.setData({
       [field]: e.detail.value
     });
+
   },
+  
 
   async onChooseImage() {
     const res = await wx.chooseImage({
@@ -54,6 +59,13 @@ Page({
   
 
   async onSubmit() {
+    // 防止短时间内重复点击
+    if (this.data.bindtapFlag) return;
+  
+    // 先设置 bindtapFlag 为 true，防止重复点击
+    this.setData({
+      bindtapFlag: true
+    });
     const { authorInfo, img } = this.data;
     const authorTime = this.getCurrentDateFormatted();
 
@@ -95,6 +107,13 @@ Page({
         icon: 'none'
       });
     }
+      
+    // 设定延时恢复 bindtapFlag，解除防连点
+    setTimeout(() => {
+      this.setData({
+        bindtapFlag: false
+      });
+    }, 500); // 500ms 可根据实际需求调整
   },
   onDeleteImage(e) {
     const { index } = e.currentTarget.dataset;
