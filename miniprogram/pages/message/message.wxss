@@ -144,3 +144,50 @@ page{
   font-size: 22rpx;
   top: 60rpx;
 }
+.favouritecontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 22rpx;
+  right: 22rpx;
+}
+
+.favouriteIcon {
+  position: relative;
+  font-weight: bold;
+}
+
+.favImg{
+  width: 45rpx;
+  height: 45rpx;
+}
+
+/* 星星动画 */
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.star-item {
+  position: absolute;
+  font-size: 24rpx;
+  opacity: 0;
+  animation: sparkle 0.6s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) translate(var(--x), var(--y));
+  }
+}
+
+

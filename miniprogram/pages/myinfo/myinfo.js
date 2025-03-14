@@ -132,7 +132,11 @@ Page({
     wx.setStorageSync('userInfo', newUserInfo); // 更新缓存
     console.log(app.globalData.userInfo);
   },
-
+  jumpToFavourite(){
+    wx.navigateTo({
+      url: '/pages/favourite/favourite',
+    })
+  },
   jump0(){
     wx.navigateTo({
       url: '/pages/category/category?index=0',

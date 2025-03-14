@@ -13,12 +13,7 @@ Page({
    */
   data: {
     isOverlayVisible: true, // 控制蒙层显示与否
-    currentIndex: 0, // 当前显示的图片索引
-    images: [
-      'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/OIP-C.jpg',
-      'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/OIP-C.jpg',
-      'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/OIP-C.jpg',
-    ]
+    mainInfo: []
   },
 
    // 关闭蒙层
@@ -28,25 +23,98 @@ Page({
     });
   },
 
-  // 处理滑动切换图片
-  onSwiperChange(e) {
-    const index = e.detail.current;
-    this.setData({
-      currentIndex: index
-    });
+  goToMessage(e){
+    console.log(e);
+    wx.navigateTo({
+      url: '/pages/outer/outer?url='+e.currentTarget.dataset.url,
+    })
   },
 
+
   handleIndex(e){
+    if(!Boolean(app.globalData.userInfo?.name)){
+      wx.switchTab({
+        url: '/pages/myinfo/myinfo',
+      })
+      wx.showToast({
+        title: '请先登录',
+        icon:'error'
+      })
+      return
+    }
     console.log(e.currentTarget.dataset.category);
     const category =  e.currentTarget.dataset.category;
     wx.navigateTo({
       url: '/pages/message/message?category='+category,
     })
   },
+
+  async getMainInfo() {
+    const pageSize = 200; // 保持每次请求200条
+    let allRecords = []; // 存储所有数据
+    let currentPage = 1; // 当前页码
+    let total = 0; // 总数据量
+  
+    // 先获取第一页数据并得到总条数
+    const firstPage = await models.message.list({
+      filter: { where: {
+        isHomeShow: {
+          $eq: true,
+        },
+      } },
+      pageSize,
+      pageNumber: currentPage,
+      getCount: true // 第一次请求获取总数
+    });
+  
+    // 合并第一页数据
+    allRecords = firstPage.data.records;
+    total = firstPage.data.total;
+  
+    // 计算总页数
+    const totalPages = Math.ceil(total / pageSize);
+  
+    // 如果有多页数据，继续获取剩余页
+    if (totalPages > 1) {
+      // 生成剩余页码数组（从第二页开始）
+      const pagePromises = [];
+      for (let page = 2; page <= totalPages; page++) {
+        pagePromises.push(
+          models.message.list({
+            filter: { where: {
+              isHomeShow: {
+                $eq: true,
+              },
+            } },
+            pageSize,
+            pageNumber: page,
+            getCount: false // 后续请求不需要总数
+          })
+        );
+      }
+  
+      // 并发请求所有剩余页
+      const responses = await Promise.all(pagePromises);
+      
+      // 合并所有结果
+      responses.forEach(response => {
+        allRecords = allRecords.concat(response.data.records);
+      });
+  
+     
+    }
+    // 更新数据
+    this.setData({
+      mainInfo: allRecords
+    });
+  
+    console.log('Total records:', allRecords.length,allRecords);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getMainInfo();
   },
 
   /**

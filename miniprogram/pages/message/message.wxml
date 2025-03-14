@@ -15,18 +15,26 @@
         <view class="intr"></view>
         <view class="detail">{{item.introduce}}</view>
         <view class="writer">{{item.writer}}</view>
-      </view>
+        <view class="favouritecontainer">
+  <!-- 收藏按钮 -->
+  <view class="favouriteIcon" catchtap="onFavouriteClick" data-index="{{index}}" data-messageid="{{item._id}}">
+    <view
 
+    ></view>
+    <image class="favImg" wx:if="{{item.isFavourite}}" src="../../images/收藏后.png" mode=""/>
+    <image class="favImg" wx:else src="../../images/收藏前.png" mode=""/>
+
+
+    <view class="star" wx:if="{{ item.showStars }}">
+      <block wx:for="{{stars}}" wx:key="index">
+        <view
+          class="star-item"
+          style="top: {{item.top}}rpx; left: {{item.left}}rpx; animation-delay: {{item.delay}}s"
+        >⭐</view>
+      </block>
     </view>
-    <view class="article" wx:for="{{mainInfo}}" wx:if="{{item.category === category}}"  wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}">
-      
-      <image  class="articleImg" src="{{item.imgUrl}}"  mode="" />
-      <view  class="context">
-        <!-- <view class="category">{{item.category}}</view> -->
-        <view class="title">{{item.title}}</view>
-        <view class="intr"></view>
-        <view class="detail">{{item.introduce}}</view>
-        <view class="writer">{{item.writer}}</view>
+  </view>
+</view>
       </view>
 
     </view>

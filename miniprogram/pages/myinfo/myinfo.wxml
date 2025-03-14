@@ -29,7 +29,7 @@
   <view class="main" >
     <view class="order_wrap">
       <view class="order_content">
-        <view class="navi" bindtap="jump0">
+        <view class="navi" bindtap="jumpToFavourite">
           <image class="ddicon" src="../../images/12.png"></image>
           <view class="order_name">收藏</view>
         </view>

@@ -7,11 +7,36 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/favourite/favourite",
+          "pathName": "pages/favourite/favourite",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/message/message",
+          "pathName": "pages/message/message",
+          "query": "category=案例",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "pages/message/message",
+          "pathName": "pages/message/message",
+          "query": "category=%E6%A1%88%E4%BE%8B",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/message/message",
           "pathName": "pages/message/message",
           "query": "category=推荐",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/message/message",

@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/start/start",
     "pages/index/index",
+    "pages/start/start",
     "pages/design/design",
     "pages/square/square",
     "pages/myinfo/myinfo",
     "pages/message/message",
     "pages/outer/outer",
-    "pages/sendSquare/sendSquare"
+    "pages/sendSquare/sendSquare",
+    "pages/favourite/favourite"
 
   ],
   "window": {

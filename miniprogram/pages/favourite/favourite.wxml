@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="header">我的收藏</view>
+  
+  <block wx:for="{{mainInfo}}" wx:key="index">
+    <view class="card" catchtap="goToMessage" data-url="{{item.jumpUrl}}">
+      <image class="card-img" src="{{item.imgUrl}}" mode="aspectFill"></image>
+      <view class="card-content">
+        <text class="card-title">{{item.title}}</text>
+        <text class="card-category">{{item.category}}</text>
+      </view>
+      <view class="remove-btn" catchtap="cancelFavourite" data-messageid="{{item._id}}" data-index="{{index}}">
+        取消收藏
+      </view>
+    </view>
+  </block>
+</view>
