@@ -1,1 +1,35 @@
-<image src="{{img}}" class="startImg"/>
+<view class="map-container">
+  <!-- 加载提示 -->
+  <view wx:if="{{loading}}" class="loading-wrapper">
+    正在加载地图数据...
+  </view>
+
+  <!-- 地图组件 -->
+  <map id="myMap" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" style="width: 100%; height: 100%;" bindmarkertap="onMarkerTap" enable-scroll enable-zoom show-location show-compass>
+    <cover-view slot="controls">
+      <cover-view class="controls">
+        <cover-view class="control-btn" bindtap="onZoomIn">
+          <cover-image src="/images/放大.png" style="width: 40rpx; height: 40rpx;display:block;" />
+        </cover-view>
+        <cover-view class="control-btn" bindtap="onZoomOut">
+          <cover-image src="/images/缩小.png" style="width: 40rpx; height: 40rpx;display:block;" />
+        </cover-view>
+        <cover-view class="control-btn" bindtap="onLocate">
+          <cover-image src="/images/定位.png" style="width: 40rpx; height: 40rpx;display:block;" />
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </map>
+
+  <view class="info-window  {{selectedMarker ? '' : 'hidden'}}" bind:tap="gotoLocations" data-jumplink="{{selectedMarker.jumpLink}}">
+    <view class="window-close" catch:tap="closeWindow"> x</view>
+    <view class="window-img">
+      <image src="{{selectedMarker.imgUrl}}" mode="" />
+    </view>
+    <view class="window-info">
+      <view class="window-title">{{selectedMarker.name|| '暂无名称'}}</view>
+      <view class="window-desc">{{selectedMarker.adress || '暂无详细地址'}}</view>
+    </view>
+
+  </view>
+</view>

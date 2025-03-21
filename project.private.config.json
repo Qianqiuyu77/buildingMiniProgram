@@ -7,22 +7,40 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/favourite/favourite",
-          "pathName": "pages/favourite/favourite",
+          "name": "pages/design/design",
+          "pathName": "pages/design/design",
           "query": "",
           "scene": null,
           "launchMode": "default"
         },
         {
-          "name": "pages/message/message",
-          "pathName": "pages/message/message",
-          "query": "category=案例",
+          "name": "pages/health/health",
+          "pathName": "pages/health/health",
+          "query": "",
           "launchMode": "default",
           "scene": null,
           "partialCompile": {
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "pages/message/message",
+          "pathName": "pages/message/message",
+          "query": "searchValue=玄武湖",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "pages/favourite/favourite",
+          "pathName": "pages/favourite/favourite",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/message/message",

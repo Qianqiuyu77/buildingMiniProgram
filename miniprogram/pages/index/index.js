@@ -12,8 +12,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchValue: '',
     isOverlayVisible: true, // 控制蒙层显示与否
-    mainInfo: []
+    mainInfo: [],
+    searchFlag: false
   },
 
    // 关闭蒙层
@@ -21,6 +23,56 @@ Page({
     this.setData({
       isOverlayVisible: false
     });
+  },
+
+  inputSearch(e){
+    let searchValue = e.detail.value;
+    console.log(searchValue);
+    this.setData({
+      searchValue: searchValue
+    })
+  },
+
+  onSearch(){
+    if(!Boolean(app.globalData.userInfo?.name)){
+      wx.switchTab({
+        url: '/pages/myinfo/myinfo',
+      })
+      wx.showToast({
+        title: '请先登录',
+        icon:'error'
+      })
+      return;
+    }
+    if(this.data.searchFlag) return;
+    this.setData({
+      searchFlag: true
+    })
+    let searchValue = this.data.searchValue;
+    if(!Boolean(searchValue)){
+      wx.showToast({
+        title: '搜索值为空',
+        icon:'error'
+      })
+      this.setData({
+        searchFlag: false
+      })
+      return;
+    }
+
+    wx.navigateTo({
+      url: '/pages/message/message?searchValue='+searchValue,
+    })
+
+    this.setData({
+      searchValue: '',
+    })
+    setTimeout(()=>{
+      this.setData({
+        searchFlag: false
+      })
+    },500)
+
   },
 
   goToMessage(e){
@@ -48,6 +100,25 @@ Page({
       url: '/pages/message/message?category='+category,
     })
   },
+
+  gotoHealth(){
+    if(!Boolean(app.globalData.userInfo?.name)){
+      wx.switchTab({
+        url: '/pages/myinfo/myinfo',
+      })
+      wx.showToast({
+        title: '请先登录',
+        icon:'error'
+      })
+      return
+    }
+
+    wx.navigateTo({
+      url: '/pages/health/health',
+    })
+  },
+
+
 
   async getMainInfo() {
     const pageSize = 200; // 保持每次请求200条

@@ -39,12 +39,15 @@ page{
   background: transparent;
   font-size: 16px;
 }
-
-.search-icon {
+.searchIconContainer{
   position: absolute;
   right: 15px;
+  z-index: 100;
+}
+.search-icon {
   width: 90rpx;
   height: 90rpx;
+
 }
 
 .news {

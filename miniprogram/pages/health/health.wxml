@@ -1,0 +1,34 @@
+<view class="topContainer">
+  <image class="logo" src="../../images/logo(1).png" />
+  <view class="custom-search">
+    <input type="text" />
+    <view class="searchIconContainer">
+      <image class="search-icon"  src="../../images/10.png" />
+    </view>
+  </view>
+</view>
+<view class="mainPage">
+    <view class="container">
+      <view class="item">
+      <image src="../../images/静态/心率.png" mode=""/>
+      </view>
+      <view class="item">
+        <image src="../../images/静态/血压.png" mode=""/>
+      </view>
+      <view class="item">
+        <image src="../../images/静态/睡眠.png" mode=""/>
+      </view>
+      <view class="item">
+        <image src="../../images/静态/情绪.png" mode=""/>
+      </view>
+      <view class="item">
+        <image src="../../images/静态/血氧.png" mode=""/>
+      </view>
+      <view class="item">
+        <image src="../../images/静态/血糖.png" mode=""/>
+      </view>
+      <view class="longItem">
+        <image src="../../images/静态/显示所有.png" mode=""/>
+      </view>
+    </view>
+</view>

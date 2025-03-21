@@ -29,6 +29,12 @@ Page({
       tempName:e.detail.value
     })
   },
+  goToMyInfo(){
+    let myUrl = 'https://mp.weixin.qq.com/s/w7zmiI5OJrXnUjZqHquYEA'
+    wx.navigateTo({
+      url: '/pages/outer/outer?url='+myUrl,
+    })
+  },
   async onChooseAvatar(e) {
     console.log(e);
     const { avatarUrl } = e.detail 
@@ -172,7 +178,7 @@ Page({
   exit(){
     app.globalData.userInfo={}
     this.setData({
-      avatUrl: 'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/015fa55b117f2fa801202e60106a69.jpg@1280w_1l_2o_100sh.jpg',
+      avatUrl: '',
       hasUserInfo: false
     })
   },

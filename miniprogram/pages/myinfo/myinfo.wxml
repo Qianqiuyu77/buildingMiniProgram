@@ -56,7 +56,7 @@
       </view>
       <view class="info_item">建议反馈</view>
       <view class="info_item">分享给朋友</view>
-      <view class="info_item">关于我们</view>
+      <view class="info_item" bind:tap="goToMyInfo">关于我们</view>
       <view class="info_item" bind:tap="exit">退出登录</view>
     </view>
     <!-- 推荐 -->

@@ -1,21 +1,27 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/start/start",
+    "pages/index/index",
     "pages/design/design",
     "pages/square/square",
     "pages/myinfo/myinfo",
     "pages/message/message",
     "pages/outer/outer",
     "pages/sendSquare/sendSquare",
-    "pages/favourite/favourite"
+    "pages/favourite/favourite",
+    "pages/health/health"
 
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "易通乐园获取位置信息"
+    }
+  },
   "window": {
     "backgroundColor": "#1fdbae",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "设计师",
+    "navigationBarTitleText": "易通乐园",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

@@ -1,8 +1,10 @@
 <view class="topContainer">
   <image class="logo" src="../../images/logo(1).png" />
   <view class="custom-search">
-    <input type="text" />
-    <image class="search-icon" src="../../images/10.png" />
+    <input type="text" value="{{searchValue}}" bindinput="inputSearch"/>
+    <view class="searchIconContainer" bind:tap="onSearch">
+      <image class="search-icon"  src="../../images/10.png" />
+    </view>
   </view>
 </view>
 <view class="mainPage">
@@ -52,12 +54,19 @@
         <view class="ModleEnglish"> Case</view>
       </view>
     </view>
-    <view bind:tap="handleIndex" data-category="敬请期待" class="tiltedBox">
-      <view class="CenterText">
-        <view class="CenterTitle" style="font-size: 25rpx;">敬请期待......</view>
-        <view class="CenterEnglish" style="padding-left: 27rpx;">Coming soon...</view>
+    <view bind:tap="gotoHealth" class="tiltedBox" style="background: linear-gradient(#fbf2d7, #fceed6)" >
+      <image class="modleIcon" src="../../images/健康数据管理图标.png" />
+      <view class="CenterText" style="margin-top: 40rpx;">
+        <view class="CenterTitle" style="font-size: 25rpx;">健康数据管理</view>
+        <view class="CenterEnglish" >Health</view>
       </view>
     </view>
+    <!-- <view bind:tap="handleIndex" data-category="健康" class="modleBox" style="height: 230rpx; background: linear-gradient(#fbf2d7, #fceed6)">
+      <view class="CenterText">
+        <view class="CenterTitle" style="font-size: 28rpx;">健康数据管理</view>
+        <view class="CenterEnglish" >Health</view>
+      </view>
+    </view> -->
   </view>
 </view>
 
