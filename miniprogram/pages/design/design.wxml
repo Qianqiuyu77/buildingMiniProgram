@@ -22,6 +22,9 @@
   </map>
 
   <view class="info-window  {{selectedMarker ? '' : 'hidden'}}" bind:tap="gotoLocations" data-jumplink="{{selectedMarker.jumpLink}}">
+    <view class="window-hand">
+    <image src="/images/小手.png" mode=""/>
+    </view>
     <view class="window-close" catch:tap="closeWindow"> x</view>
     <view class="window-img">
       <image src="{{selectedMarker.imgUrl}}" mode="" />

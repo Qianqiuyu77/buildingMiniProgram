@@ -93,6 +93,28 @@
   flex-direction: column;
 
 }
+@keyframes handanimate {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.window-hand {
+  position: absolute;
+  bottom: 30rpx;
+  right: 120rpx;
+  width: 50rpx;
+  height: 50rpx;
+  animation: handanimate 1s infinite ease-in-out;
+}
+
+.window-hand image{
+  width: 100%;
+  height: 100%;
+}
 
 /* 控制按钮组 */
 .controls {
