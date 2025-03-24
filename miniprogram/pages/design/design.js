@@ -62,11 +62,11 @@ Page({
       selectedMarker: null
     })
   },
-  // gotoMarks(e) {
-  //   wx.navigateTo({
-  //     url: '/pages/outer/outer?url=' + e.currentTarget.dataset.jumplink,
-  //   })
-  // },
+  gotoLocations(e) {
+    wx.navigateTo({
+      url: '/pages/outer/outer?url=' + e.currentTarget.dataset.jumplink,
+    })
+  },
   // 标记点点击
   onMarkerTap(e) {
     console.log(e);
