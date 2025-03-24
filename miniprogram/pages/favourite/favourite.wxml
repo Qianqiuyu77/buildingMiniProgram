@@ -1,4 +1,4 @@
-<view class="container">
+<!-- <view class="container">
   <view class="header">我的收藏</view>
   
   <block wx:for="{{mainInfo}}" wx:key="index">
@@ -13,4 +13,53 @@
       </view>
     </view>
   </block>
+</view> -->
+<view class="topContainer">
+  <image class="logo" src="../../images/logo(1).png" />
+  <view class="custom-search" >
+    <input type="text" bindinput="inputSearch" value="{{searchValue}}" bindconfirm="onSearch"/>
+    <view class="searchIconContainer" bind:tap="onSearch">
+      <image class="search-icon"  src="../../images/10.png" />
+    </view>
+  </view>
+  <view class="resetButton" bind:tap="resetSearch">
+    <image   src="../../images/重置.png" mode=""/>
+  </view>
 </view>
+<view wx:key="index "  class="navContainer ">
+  <view  wx:for="{{navConfig}}" wx:key="index" bind:tap="selectKey" data-index="{{item.index}}" 
+  class="navItem  {{currentKey === item.index ? 'active': '' }}">
+  {{item.title}}
+  </view>
+</view>
+  <scroll-view scroll-y  class="container">
+    <view class="article " wx:for="{{mainInfo}}" wx:if="{{item.category === category}}"  wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}">
+      
+      <image  class="articleImg" src="{{item.imgUrl}}"  mode="" />
+      <view  class="context">
+        <!-- <view class="category">{{item.category}}</view> -->
+        <view class="title">{{item.title}}</view>
+        <view class="intr"></view>
+        <view class="detail">{{item.introduce}}</view>
+        <view class="writer">{{item.writer}}</view>
+        <view class="favouritecontainer">
+  <!-- 收藏按钮 -->
+  <view class="favouriteIcon" catchtap="cancelFavourite" data-index="{{index}}" data-messageid="{{item._id}}">
+    <view
+
+    ></view>
+    <image class="favImg"  src="../../images/收藏后.png" mode=""/>
+    <view class="star" wx:if="{{ item.showStars }}">
+      <block wx:for="{{stars}}" wx:key="index">
+        <view
+          class="star-item"
+          style="top: {{item.top}}rpx; left: {{item.left}}rpx; animation-delay: {{item.delay}}s"
+        >⭐</view>
+      </block>
+    </view>
+  </view>
+</view>
+      </view>
+
+    </view>
+  </scroll-view>

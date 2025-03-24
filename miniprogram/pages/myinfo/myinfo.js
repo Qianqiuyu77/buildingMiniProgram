@@ -153,6 +153,11 @@ Page({
       url: '/pages/category/category?index=1',
     })
   },
+  jumpToMap(){
+    wx.switchTab({
+      url: '/pages/design/design',
+    })
+  },
   jump2(){
     wx.navigateTo({
       url: '/pages/category/category?index=2',

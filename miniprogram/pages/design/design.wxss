@@ -41,6 +41,7 @@
 .info-window.hidden {
   transform: translateY(120%);
   opacity: 0;
+  pointer-events: none;
 }
 
 .window-title {

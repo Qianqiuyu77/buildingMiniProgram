@@ -19,10 +19,76 @@ Page({
 
     favouriteInfo: [],
     mainInfo: [],
-    userId: app.currentTarget?.userInfo?.openid || 'o6Zra4pytaFh5-KIAXyNb9p9nDwA'
+    userId: app.currentTarget?.userInfo?.openid || 'o6Zra4pytaFh5-KIAXyNb9p9nDwA',
+    searchValue: '',
+    searchFlag: false,
+    currentKey: 1,
+    category: '推荐',
+    navConfig:[
+      {
+        index: 1,
+        title: '推荐'
+      },
+      {
+        index: 2,
+        title: '科普'
+      },
+      {
+        index: 3,
+        title: '案例'
+      },
+      {
+        index: 4,
+        title: '产品'
+      },
+      {
+        index: 5,
+        title: '商家'
+      },
+    ]
 
   },
-
+  selectKey(e){
+    let index = e.currentTarget.dataset.index;
+    let navConfig = this.data.navConfig;
+    let currentCategory =  navConfig[index - 1];
+    this.setData({
+      currentKey: e.currentTarget.dataset.index,
+      category: currentCategory.title
+    })
+    
+  },
+  inputSearch(e){
+    let searchValue = e.detail.value;
+    console.log(searchValue);
+    this.setData({
+      searchValue: searchValue
+    })
+  },
+  async resetSearch(){
+    await this.getData()
+  },
+  async onSearch(){
+    if(this.data.searchFlag)
+    return;
+    this.setData({
+      searchFlag: true
+    })
+    if(!this.data.searchValue){
+      wx.showToast({
+        title: "搜索内容为空!",
+        icon: "error",
+      });
+      return;
+    }
+    await this.getData()
+    this.setData({
+      searchValue: ''
+    })
+    setTimeout(()=> this.setData({
+      searchFlag: false
+    }),500)
+  },
 
   async getFavouriteData(userId) {
     const pageSize = 200; // 保持每次请求200条
@@ -78,9 +144,6 @@ Page({
         allRecords = allRecords.concat(response.data.records);
       });
     }
-    allRecords.filter(item => {
-
-    })
     // 更新数据
     this.setData({
       favouriteInfo: allRecords
@@ -88,12 +151,25 @@ Page({
 
     console.log('Total favouriteInfo:', allRecords.length, allRecords);
   },
+  getSearchInfo(mainInfo, searchValue) {
+
+    if (!searchValue) {
+        return mainInfo; // 如果 searchValue 为空，返回所有数据
+    }
+  
+    mainInfo = mainInfo.filter(item => {
+        return item.title && item.title.includes(searchValue);
+    });
+  
+    return mainInfo; // 返回匹配的数组
+  },
   async getMainInfo() {
     const pageSize = 200; // 保持每次请求200条
     let allRecords = []; // 存储所有数据
     let currentPage = 1; // 当前页码
     let total = 0; // 总数据量
     let favouriteInfo = this.data.favouriteInfo;
+    let searchValue = this.data.searchValue;
     // 先获取第一页数据并得到总条数
     const firstPage = await models.message.list({
       filter: {
@@ -143,6 +219,9 @@ Page({
     allRecords = allRecords.filter(item => {
       return favouriteInfo.find(fav => fav.messageId === item._id)
     })
+    if (searchValue) {
+      allRecords = this.getSearchInfo(allRecords, searchValue);
+    }
     // 更新数据
     this.setData({
       mainInfo: allRecords
@@ -200,12 +279,15 @@ Page({
       url: '/pages/outer/outer?url=' + e.currentTarget.dataset.url,
     })
   },
+  async getData(){
+    await this.getFavouriteData()
+    await this.getMainInfo()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    await this.getFavouriteData(this.data.userId)
-    await this.getMainInfo()
+    await this.getData()
   },
 
   /**

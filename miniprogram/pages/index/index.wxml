@@ -1,7 +1,7 @@
 <view class="topContainer">
   <image class="logo" src="../../images/logo(1).png" />
   <view class="custom-search">
-    <input type="text" value="{{searchValue}}" bindinput="inputSearch"/>
+    <input type="text" value="{{searchValue}}" bindinput="inputSearch" bindconfirm="onSearch"/>
     <view class="searchIconContainer" bind:tap="onSearch">
       <image class="search-icon"  src="../../images/10.png" />
     </view>

@@ -1,4 +1,4 @@
-.container {
+/* .container {
   padding: 20rpx;
   background-color: #f5f5f5;
   min-height: 100vh;
@@ -52,4 +52,221 @@
   padding: 10rpx;
   border-radius: 0 0 20rpx 20rpx;
   font-size: 28rpx;
+} */
+
+page{
+  background: linear-gradient(#aed5f7, #f8e6ad); /* 默认从上到下渐变 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.topContainer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+ }
+
+ .logo{
+  width: 85rpx;
+  height: 90rpx;
+  margin-left: 50rpx;
+  }
+
+  /* 搜索框 */
+.custom-search {
+  position: relative;
+  width: 100%;
+  max-width: 450rpx;
+  margin: 10px auto;
+  background-color: #dbebf7;
+  border-radius: 25px;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  box-shadow: -2rpx 10rpx 20rpx rgba(0, 0, 0, 0.1), 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.custom-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 16px;
+}
+.searchIconContainer{
+  position: absolute;
+  right: 15px;
+  z-index: 100;
+}
+.search-icon {
+  width: 90rpx;
+  height: 90rpx;
+}
+.resetButton{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.resetButton image{
+  width: 100%;
+  height: 100%;
+}
+
+.news {
+  background-image: url("https://7169-qianqiu-2guqlxz723dd8047-1319929279.tcb.qcloud.la/image/015fa55b117f2fa801202e60106a69.jpg%401280w_1l_2o_100sh.jpg?sign=783ba572e5cdf87ab576c987ae6bc195&t=1731256558");
+  width:100%;
+  height: 9.5rem;
+  margin-top: 0.5vh;
+  background-size:cover;
+}
+
+.hots{
+  width: 100%;
+  height: 6rem;
+  margin-top: 0.5rem;
+  flex-direction: row;
+  display: flex;
+  white-space:nowrap;
+}
+.hotsImg{
+  margin-top: 0.5rem;
+  display: inline-block;
+  margin-right: 1rem;
+  width: 10rem;
+  height: 5rem;
+  background-color:#fff;
+}
+.icons{
+  width: 92vw;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+.myIcon{
+  width: 5rem;
+  height: 4rem;
+}
+.myIcon image{
+  width: 3rem;
+  height: 3rem;
+}
+.myIcon view{
+  margin-top: -0.2rem;
+  margin-left: 20rpx;
+  font-size: 24rpx;
+}
+.container{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1200rpx;
+  border-radius: 1rem;
+  z-index: 999;
+}
+.article{
+  width: 90%;
+  margin: auto;
+  height: 195rpx;
+  background-color: #fff;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+.articleImg{
+  width: 190rpx;
+  height: 195rpx;
+  border-radius: 0.5rem;
+}
+.context{
+  display: inline-block;
+  height: 160rpx;
+  margin-left: 30rpx;
+}
+.category{
+  color:#1fdbae;
+  position: absolute;
+  top: 10rpx;
+  right: 50rpx;
+  font-size: 23rpx;
+}
+.title{
+  position: absolute;
+  top: 18rpx;
+  font-size: 30rpx;
+}
+.writer{
+  position: absolute;
+  bottom: 20rpx;
+  font-size: 22rpx;
+}
+.detail{
+  position: absolute;
+  font-size: 22rpx;
+  top: 60rpx;
+}
+.favouritecontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 22rpx;
+  right: 22rpx;
+}
+
+.favouriteIcon {
+  position: relative;
+  font-weight: bold;
+}
+
+.favImg{
+  width: 45rpx;
+  height: 45rpx;
+}
+
+/* 星星动画 */
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.star-item {
+  position: absolute;
+  font-size: 24rpx;
+  opacity: 0;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+
+.navItem {
+  flex: 1; 
+  text-align: center; 
+  background-color: pink;
+  padding: 15rpx 0;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.3); 
+  border-radius: 5rpx;
+  background: linear-gradient(to bottom, #adcfea, #b6d7ef);
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: inset 0 6rpx 6rpx rgba(0, 0, 0, 0.2); 
+}
+
+
