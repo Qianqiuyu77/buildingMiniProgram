@@ -1,0 +1,20 @@
+<!--pages/feedback/index.wxml-->
+	<view class="feedback_main">
+		<view class="title">问题的种类</view>
+		<view class="tips">
+			<text class="{{ 1 == index ? 'active' : '' }}" data-index="1" bindtap="getindex">功能建议</text>
+			<text class="{{ 2 == index ? 'active' : '' }}" data-index="2" bindtap="getindex">系统遇到问题</text>
+			<text class="{{ 3 == index ? 'active' : '' }}" data-index="3" bindtap="getindex">夸夸我们</text>
+			<text class="{{ 4 == index ? 'active' : '' }}" data-index="4" bindtap="getindex">其他</text>
+		</view>
+		<view class="content">
+			<textarea value="{{feedbackText}}" bindinput="onInputFeedback" placeholder="请描述一下您的问题"></textarea>
+			<!-- <view class="tool">
+				<button bindtap="onTapChooseImg">+</button>
+				<view class="upload_img_item" bindtap="onTapRemoveImg" data-index="{{index}}" wx:for="{{chooseImgsPath}}" wx:key="*this"><UploadImg src="{{item}}"></UploadImg></view>
+			</view> -->
+		</view>
+		<view class="form_btn_wrap">
+			<button type="warn" bindtap="onTapSubmit">提交</button>
+		</view>
+	</view>

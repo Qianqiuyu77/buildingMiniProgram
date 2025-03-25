@@ -22,6 +22,9 @@
   </map>
 
   <view class="info-window  {{selectedMarker ? '' : 'hidden'}}" bind:tap="gotoLocations" data-jumplink="{{selectedMarker.jumpLink}}">
+    <view class="window-navBtn" catch:tap="navigationTo" data-location="{{selectedMarker}}">
+      <image src="/images/导航.png" mode=""/>
+    </view>
     <view class="window-hand">
     <image src="/images/小手.png" mode=""/>
     </view>
@@ -34,5 +37,14 @@
       <view class="window-desc">{{selectedMarker.adress || '暂无详细地址'}}</view>
     </view>
 
+  </view>
+</view>
+
+<view class="topContainer">
+  <view class="custom-search">
+    <input type="text" value="{{searchValue}}" bindinput="inputSearch" bindconfirm="onSearch"/>
+    <view class="searchIconContainer" bind:tap="onSearch">
+      <image class="search-icon"  src="../../images/10.png" />
+    </view>
   </view>
 </view>

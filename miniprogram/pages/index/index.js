@@ -42,6 +42,9 @@ Page({
         title: '请先登录',
         icon:'error'
       })
+      setTimeout(()=> this.setData({
+        searchFlag: false
+      }),500)
       return;
     }
     if(this.data.searchFlag) return;
@@ -171,15 +174,23 @@ Page({
       responses.forEach(response => {
         allRecords = allRecords.concat(response.data.records);
       });
+
   
      
     }
+    allRecords.forEach(item=>{
+      item.createdAt = this.formatTime(item.createdAt)
+    })
     // 更新数据
     this.setData({
       mainInfo: allRecords
     });
   
     console.log('Total records:', allRecords.length,allRecords);
+  },
+  formatTime(timestamp) {
+    const date = new Date(timestamp);
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   },
   /**
    * 生命周期函数--监听页面加载

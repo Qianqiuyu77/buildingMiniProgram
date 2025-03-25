@@ -7,11 +7,43 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/design/design",
-          "pathName": "pages/design/design",
+          "name": "pages/feedback/feedback",
+          "pathName": "pages/feedback/feedback",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/chat/chat",
+          "pathName": "pages/chat/chat",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "pages/chat/chat",
+          "pathName": "pages/chat/chat",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/start/start",
+          "pathName": "pages/start/start",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/design/design",
+          "pathName": "pages/design/design",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/health/health",

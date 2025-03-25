@@ -27,6 +27,7 @@
 .tab-icon {
   width: 50px;
   height: 50px;
+  object-fit: contain;
 }
 
 .select{
@@ -37,4 +38,15 @@
 .tab-text {
   font-size: 12px;
   margin-top: 2px;
+}
+
+
+.chatIcon{
+
+  border-radius: 50%;
+  box-shadow: 0 15rpx 30rpx rgba(248, 211, 173, 0.8);
+  filter: drop-shadow(0 2rpx 4rpx rgba(0,0,0,0.1)); /* 图标投影 */
+  transform: translateY(-30%);
+  background: linear-gradient(145deg, #f7c88d, #f3a870);
+
 }

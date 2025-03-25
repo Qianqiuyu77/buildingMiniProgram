@@ -16,6 +16,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchFlag: false,
+    searchValue: '',
     longitude: 116.397477, // 经度（北京天安门）
     latitude: 39.908692, // 纬度
     locationsInfos: [],
@@ -24,6 +26,74 @@ Page({
     loading: true,
     selectedMarker: null
 
+  },
+  inputSearch(e) {
+    let searchValue = e.detail.value;
+    console.log(searchValue);
+    this.setData({
+      searchValue: searchValue
+    })
+  },
+
+  getSearchMark() {
+    let mainInfo = this.data.locationsInfos;
+    let searchLocation = mainInfo.find(item => {
+      return item.name && item.name.includes(this.data.searchValue) || item.address && item.address.includes(this.data.searchValue);
+    })
+    if (!searchLocation) {
+      wx.showToast({
+        title: '数据库中暂时没有此数据！',
+        icon: 'error'
+      })
+      return
+    }
+
+    const mapCtx = wx.createMapContext('myMap'); // 获取地图上下文
+    mapCtx.moveToLocation({
+      longitude: searchLocation.longitude,
+      latitude: searchLocation.latitude
+    });
+
+    this.setData({
+      selectedMarker: searchLocation
+    })
+  },
+
+  navigationTo(e) {
+    let searchLocation = e.currentTarget.dataset.location;
+    wx.openLocation({
+      latitude: searchLocation.latitude, // 目标位置纬度
+      longitude: searchLocation.longitude, // 目标位置经度
+      name: searchLocation.name,
+      address: searchLocation.address,
+      scale: 18
+    });
+  },
+
+  async onSearch() {
+    if (this.data.searchFlag)
+      return;
+    console.log('search');
+    this.setData({
+      searchFlag: true
+    })
+    if (!this.data.searchValue) {
+      wx.showToast({
+        title: "搜索内容为空!",
+        icon: "error",
+      });
+      setTimeout(() => this.setData({
+        searchFlag: false
+      }), 500)
+      return;
+    }
+    this.getSearchMark()
+    this.setData({
+      searchValue: ''
+    })
+    setTimeout(() => this.setData({
+      searchFlag: false
+    }), 500)
   },
   async getUserLocations() {
     let that = this;

@@ -5,11 +5,13 @@
     "pages/design/design",
     "pages/square/square",
     "pages/myinfo/myinfo",
+    "pages/chat/chat",
     "pages/message/message",
     "pages/outer/outer",
     "pages/sendSquare/sendSquare",
     "pages/favourite/favourite",
-    "pages/health/health"
+    "pages/health/health",
+    "pages/feedback/feedback"
 
   ],
   "permission": {
@@ -55,6 +57,11 @@
         "text": "我的",
         "iconPath": "images/4.png",
         "selectedIconPath": "images/4.png"
+      },{
+        "pagePath": "pages/chat/chat",
+        "text":"咨询",
+        "iconPath": "images/AI咨询.png",
+        "selectedIconPath":"images/AI咨询.png"
       }
     ]
   }

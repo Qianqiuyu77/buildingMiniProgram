@@ -7,8 +7,10 @@
       data-path="{{item.pagePath}}"
       data-index="{{index}}"
     >
-      <image class="tab-icon {{selected === index ? 'select' : ''}} " src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+      <image class="tab-icon {{index === 2 ? 'chatIcon':''}} {{selected === index ? 'select' : ''}} " src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
     </view>
+
   </block>
+
 </view>
 </view>

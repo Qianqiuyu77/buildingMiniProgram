@@ -9,13 +9,17 @@ Page({
     img:"cloud://"+app.globalData.envParams+".7169-qianqiu-2guqlxz723dd8047-1319929279/image/开屏.png",
   },
 
+  gotoIndex(){
+    wx.switchTab({ url: '/pages/index/index' })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     setTimeout(()=>{
       wx.switchTab({ url: '/pages/index/index' })
-    },4000)
+    },3000)
   
   },
 

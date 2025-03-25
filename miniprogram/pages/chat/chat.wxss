@@ -1,0 +1,133 @@
+/* pages/chat/chat.wxss */
+.container {
+  height: 99vh;
+  background: linear-gradient(180deg, #F5FAFF 0%, #EAF2FF 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-area {
+  flex: 1;
+  padding: 20rpx 0;
+  overscroll-behavior: contain;
+}
+
+.user-message, .ai-message {
+  display: flex;
+  align-items: flex-start;
+  margin: 20rpx 30rpx;
+  animation: messageAppear 0.3s ease-out;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  flex-shrink: 0;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(108,155,255,0.15);
+  border: 2rpx solid rgba(255,255,255,0.9);
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 20rpx 28rpx;
+  border-radius: 16rpx;
+  margin: 0 20rpx;
+  line-height: 1.6;
+  position: relative;
+  font-size: 28rpx;
+  word-break: break-word;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.06);
+}
+
+.user .message-bubble {
+  background: #6C9BFF;
+  color: #FFFFFF;
+  border-radius: 16rpx 4rpx 16rpx 16rpx;
+  margin-left: 100rpx;
+}
+
+.user .message-bubble::after {
+  content: '';
+  position: absolute;
+  right: -14rpx;
+  top: 24rpx;
+  width: 0;
+  height: 0;
+  border: 12rpx solid transparent;
+  border-left-color: #6C9BFF;
+}
+
+.ai .message-bubble {
+  background: #FFFFFF;
+  color: #2D3748;
+  border-radius: 4rpx 16rpx 16rpx 16rpx;
+  margin-right: 100rpx;
+}
+
+.ai .message-bubble::before {
+  content: '';
+  position: absolute;
+  left: -14rpx;
+  top: 24rpx;
+  width: 0;
+  height: 0;
+  border: 12rpx solid transparent;
+  border-right-color: #FFFFFF;
+}
+
+.input-area {
+  width: 90%;
+  position: fixed;
+  bottom: 200rpx;
+  padding: 24rpx 32rpx;
+  /* background: rgba(255,255,255,0.98); */
+  border-top: 2rpx solid #EDF4FF;
+  display: flex;
+  gap: 20rpx;
+}
+
+.input {
+  flex: 1;
+  height: 80rpx;
+  padding: 0 32rpx;
+  background: #F8FAFF;
+  border-radius: 48rpx;
+  border: 2rpx solid #E3ECFF;
+  font-size: 28rpx;
+  color: #4A5568;
+}
+
+.send-btn {
+  width: 160rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #6C9BFF;
+  border-radius: 48rpx;
+  font-size: 28rpx;
+  color: white;
+  transition: transform 0.1s;
+  margin: 0;
+}
+
+.send-btn:active {
+  transform: scale(0.96);
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+

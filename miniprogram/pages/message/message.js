@@ -14,13 +14,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchFlag: false,
     searchValue:'',
     mainInfo:[],
     favouriteInfo: [],
     category: '',
     showStars: false, // 控制星星动画
     stars: [], // 存放星星的位置
-    searchFlag: false,
     favouriteFlag: false,
   },
   async onFavouriteClick(e) {
@@ -262,6 +262,9 @@ async getData(){
         title: "搜索内容为空!",
         icon: "error",
       });
+      setTimeout(()=> this.setData({
+        searchFlag: false
+      }),500)
       return;
     }
     await this.getData()

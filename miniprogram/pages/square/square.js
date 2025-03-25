@@ -17,45 +17,122 @@ Page({
     activeList: [1,2,3,4,5,6,7],
     Nowtagname:"",
     searchflag:false,
+    searchValue: '',
     testImg: 'cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/015fa55b117f2fa801202e60106a69.jpg@1280w_1l_2o_100sh.jpg',
     plArr: [],
+    isOpen: false, // 控制下拉菜单显示
+    options: ['材料', '产品', '案例', '科普'], // 菜单选项
+    selected: '' // 选中的值
+  },
+   // 切换下拉菜单
+   toggleDropdown() {
+    this.setData({ isOpen: !this.data.isOpen });
+  },
+
+  // 选择菜单项
+  selectOption(e) {
+    const value = e.currentTarget.dataset.value;
+    this.setData({ selected: value, isOpen: false });
+    wx.showToast({ title: `选择了：${value}`, icon: 'none' });
+  },
+  findPl(plArr) {
+
+    let searchValue = this.data.searchValue.trim().toLowerCase(); // 统一转换小写
+    if (!searchValue) return plArr; // 如果搜索框为空，返回全部数据
+  
+    return plArr.filter(item => {
+      return Object.values(item).some(value => 
+        String(value).toLowerCase().includes(searchValue) // 确保值是字符串，并进行模糊匹配
+      );
+    });
+  },
+  inputSearch(e){
+    let searchValue = e.detail.value;
+    console.log(searchValue);
+    this.setData({
+      searchValue: searchValue
+    })
+  },
+  async resetSearch(){
+    await this.getPlArr()
+  },
+  async onSearch(){
+    if(this.data.searchFlag)
+    return;
+    this.setData({
+      searchFlag: true
+    })
+    if(!this.data.searchValue){
+      wx.showToast({
+        title: "搜索内容为空!",
+        icon: "error",
+      });
+      return;
+    }
+    let plArr = this.data.plArr
+    plArr = this.findPl(plArr)
+
+    this.setData({
+      plArr: plArr,
+      searchValue: ''
+    })
+    setTimeout(()=> this.setData({
+      searchFlag: false
+    }),500)
   },
   async getPlArr() {
-    let allRecords = []; // 存储所有获取到的数据
-    let currentPage = 1; // 从第一页开始
-    
-    while (true) {
-      const { data } = await models.plBox.list({
-        filter: {
-          where: {}
-        },
-        pageSize: 10, // 每次请求的记录数
-        pageNumber: currentPage, // 当前页
-        getCount: true, // 获取总数
-      });
+    const pageSize = 200; // 保持每次请求200条
+    let allRecords = []; // 存储所有数据
+    let currentPage = 1; // 当前页码
+    let total = 0; // 总数据量
   
-      // 如果没有数据，退出循环
-      if (data.records.length === 0) break;
+    // 先获取第一页数据并得到总条数
+    const firstPage = await models.plBox.list({
+      filter: { where: {
+      } },
+      pageSize,
+      pageNumber: currentPage,
+      getCount: true // 第一次请求获取总数
+    });
   
-      // 对获取的数据进行处理
-      let updatedArray = data.records.map(obj => ({
-        ...obj, // 展开当前对象以保留所有现有属性  
-        comment: '' // 添加新的属性
-      }));
+    // 合并第一页数据
+    allRecords = firstPage.data.records;
+    total = firstPage.data.total;
   
-      // 合并当前页数据
-      allRecords = [...allRecords, ...updatedArray];
+    // 计算总页数
+    const totalPages = Math.ceil(total / pageSize);
+  
+    // 如果有多页数据，继续获取剩余页
+    if (totalPages > 1) {
+      // 生成剩余页码数组（从第二页开始）
+      const pagePromises = [];
+      for (let page = 2; page <= totalPages; page++) {
+        pagePromises.push(
+          models.plBox.list({
+            filter: { where: {
+  
+            } },
+            pageSize,
+            pageNumber: page,
+            getCount: false // 后续请求不需要总数
+          })
+        );
+      }
+  
+      // 并发请求所有剩余页
+      const responses = await Promise.all(pagePromises);
       
-      // 页数递增，继续请求下一页
-      currentPage++;
+      // 合并所有结果
+      responses.forEach(response => {
+        allRecords = allRecords.concat(response.data.records);
+      });
     }
+
     allRecords.sort((a, b) => b.createdAt - a.createdAt);
     // 更新数据状态
     this.setData({
       plArr: allRecords, // 设置所有数据
     });
-  
-    console.log(allRecords); // 输出所有数据
     console.log(this.data.plArr); // 输出已更新的 plArr
   },
   bindKeyInput(e){
@@ -193,7 +270,7 @@ gotoSendSquare(){
   async onShow () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 2  // 当前页面索引
+        selected: 3  // 当前页面索引
       });
     }
     console.log(app.globalData);

@@ -79,6 +79,9 @@ Page({
         title: "搜索内容为空!",
         icon: "error",
       });
+      setTimeout(()=> this.setData({
+      searchFlag: false
+    }),500)
       return;
     }
     await this.getData()

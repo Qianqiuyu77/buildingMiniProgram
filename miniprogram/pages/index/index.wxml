@@ -74,11 +74,33 @@
   <view class="content">
     <!-- 关闭按钮 -->
     <!-- 图片滑动组件 -->
-    <swiper class="swiper-container" current="{{currentIndex}}" indicator-dots="true" autoplay="false" circular="true"  >
-      <swiper-item wx:for="{{mainInfo}}"  wx:key="index" bindtap="goToMessage" data-url="{{item.jumpUrl}}">
-        <image class="swiper-image" src="{{item.imgUrl}}" mode="aspectFill"/>
-      </swiper-item>
-    </swiper>
+    <swiper class="swiper-container" current="{{currentIndex}}" indicator-dots="true" autoplay="false" circular="true">
+  <!-- 新增装饰性角标 -->
+  <view class="corner-decor top-left"></view>
+  <view class="corner-decor top-right"></view>
+  <view class="corner-decor bottom-left"></view>
+  <view class="corner-decor bottom-right"></view>
+  
+  <swiper-item wx:for="{{mainInfo}}" wx:key="index" bindtap="goToMessage" data-url="{{item.jumpUrl}}">
+    <!-- 新增标题装饰条 -->
+    <view class="title-decoration"></view>
+    <view class="swiper-title">
+      {{item.title}}
+    </view>
+    
+    <!-- 新增时间图标 -->
+    <view class="swiper-time">
+      <view class="time-icon"></view>
+      {{item.createdAt}}
+    </view>
+    
+    <!-- 图片容器新增边框 -->
+    <image class="swiper-image" src="{{item.imgUrl}}" mode="aspectFill"/>
+    
+    <!-- 新增底部装饰条 -->
+    <view class="bottom-decoration"></view>
+  </swiper-item>
+</swiper>
  
   </view>
   <button class="close-btn" bindtap="closeOverlay">X</button>

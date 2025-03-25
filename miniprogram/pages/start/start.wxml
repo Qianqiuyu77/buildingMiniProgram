@@ -1,1 +1,4 @@
 <image src="{{img}}" class="startImg"/>
+<view class="inButton" bind:tap="gotoIndex">
+  进入体验
+</view>

@@ -3,6 +3,12 @@ Component({
     selected: 0,  // 当前选中页面索引
     color: "#A2A9B0",  // 未选中颜色
     selectedColor: "#1fdbae",  // 选中颜色
+    chat: {
+      pagePath: "/pages/chat/chat",
+      iconPath: "/images/AI咨询.png",
+      selectedIconPath: "/images/AI咨询.png",
+      text: "咨询"
+    },
     list: [
       {
         pagePath: "/pages/index/index",
@@ -15,6 +21,12 @@ Component({
         iconPath: "/images/2.png",
         selectedIconPath: "/images/阴影2.png",
         text: "设计"
+      },
+      {
+        pagePath: "/pages/chat/chat",
+        iconPath: "/images/AI咨询.png",
+        selectedIconPath: "/images/AI咨询.png",
+        text: "咨询"
       },
       {
         pagePath: "/pages/square/square",

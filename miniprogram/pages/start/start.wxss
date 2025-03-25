@@ -3,3 +3,19 @@
   width: 100vw;
   height: 100vh;
 }
+
+.inButton{
+  position: fixed;
+  top: 67%;
+  left: calc(50% - 100rpx);
+  width: 200rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+  border: #80bef5 2px solid;
+  background-color: #80bef5;
+  color: #fff;
+  box-shadow: -2rpx 10rpx 20rpx rgba(0, 0, 0, 0.3), 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.1);
+}

@@ -18,7 +18,7 @@
         <image class="user_icon" src="{{avatUrl}}" ></image>
       <view wx:if="{{hasUserInfo}}" class="user_name" >
       <view>{{name}}</view>
-      <view style="font-size: 20rpx; margin-top: 10rpx; margin-right: 20rpx; font-weight: 300;">ID： 123456789</view>
+      <view style="font-size: 20rpx; margin-top: 10rpx; margin-right: 20rpx; font-weight: 300;">ID： {{randomId}}</view>
       </view>
       <view  wx:if="{{!hasUserInfo}}"  class="user_name"   bindtap="getUserInfo">
         <text decode="{{true}}" style=" font-size:19px;color: #fff; "> 登录/注册&ensp;></text>
@@ -54,8 +54,7 @@
       <view class="info_item" bindtap="callPhone">
       联系客服
       </view>
-      <view class="info_item">建议反馈</view>
-      <view class="info_item">分享给朋友</view>
+      <view class="info_item" bind:tap="goToFeedBack">建议反馈</view>
       <view class="info_item" bind:tap="goToMyInfo">关于我们</view>
       <view class="info_item" bind:tap="exit">退出登录</view>
     </view>

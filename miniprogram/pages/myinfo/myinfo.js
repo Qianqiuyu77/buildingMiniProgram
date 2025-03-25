@@ -22,7 +22,8 @@ Page({
     avatUrl:"cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/015fa55b117f2fa801202e60106a69.jpg@1280w_1l_2o_100sh.jpg",
     hasUserInfo: false,
     tempUrl:"cloud://qianqiu-2guqlxz723dd8047.7169-qianqiu-2guqlxz723dd8047-1319929279/image/015fa55b117f2fa801202e60106a69.jpg@1280w_1l_2o_100sh.jpg",
-    tempName:""
+    tempName:"",
+    randomId : Math.floor(10000000 + Math.random() * 90000000)
   },
   getinput(e){
     this.setData({
@@ -33,6 +34,11 @@ Page({
     let myUrl = 'https://mp.weixin.qq.com/s/w7zmiI5OJrXnUjZqHquYEA'
     wx.navigateTo({
       url: '/pages/outer/outer?url='+myUrl,
+    })
+  },
+  goToFeedBack(){
+    wx.navigateTo({
+      url: '/pages/feedback/feedback',
     })
   },
   async onChooseAvatar(e) {
@@ -170,7 +176,7 @@ Page({
   },
   callPhone(){
     wx.makePhoneCall({
-      phoneNumber: "18293639298",
+      phoneNumber: "19808117286",
       success: function () {
         console.log("拨打电话成功！")
       },
@@ -220,7 +226,7 @@ Page({
   onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 3  // 当前页面索引
+        selected: 4  // 当前页面索引
       });
     }
   },

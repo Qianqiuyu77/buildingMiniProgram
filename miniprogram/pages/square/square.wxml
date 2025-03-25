@@ -3,15 +3,36 @@
 </view> -->
 <view class="topContainer">
   <view class="custom-search">
-    <input type="text" />
-    <image class="search-icon" src="../../images/10.png" />
+    <view class="dropdown">
+      <!-- 触发按钮 -->
+      <view class="dropdown-button " bindtap="toggleDropdown">
+        <view class="dropImage {{isOpen ? 'roate' : ''}}">
+          <image src="../../images/下 .png" mode="" />
+        </view>
+
+        <text class="arrow {{isOpen ? 'arrow-up' : 'arrow-down'}}"></text>
+      </view>
+
+      <!-- 下拉菜单 -->
+      <view class="dropdown-menu" wx:if="{{isOpen}}">
+        <view class="dropdown-item" wx:for="{{options}}" wx:key="index" bindtap="selectOption" data-value="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <input type="text" bindinput="inputSearch" value="{{searchValue}}" bindconfirm="onSearch" />
+
+    <image class="search-icon" src="../../images/10.png" bind:tap="onSearch"/>
+  </view>
+  <view class="resetButton" bind:tap="resetSearch">
+    <image   src="../../images/重置.png" mode=""/>
   </view>
 </view>
 <scroll-view scroll-y class="scroll">
   <view class="outer">
     <view wx:for="{{plArr}}" wx:key="_id" class="plbox">
-    <image bind:tap="changeLove" data-index="{{index}}" data-love="{{false}}" wx:if="{{!item.loveFlag}}" class="blockLove" src="../../images/11.png" />
-    <image bind:tap="changeLove" data-index="{{index}}" data-love="{{true}}" wx:if="{{item.loveFlag}}" class="fullLove" src="../../images/爱心.png" />
+      <image bind:tap="changeLove" data-index="{{index}}" data-love="{{false}}" wx:if="{{!item.loveFlag}}" class="blockLove" src="../../images/11.png" />
+      <image bind:tap="changeLove" data-index="{{index}}" data-love="{{true}}" wx:if="{{item.loveFlag}}" class="fullLove" src="../../images/爱心.png" />
       <view class="info">
         <image class="toux" src="{{item.authorImg}}" mode="" />
         <view class="nameAndTime">

@@ -1,3 +1,50 @@
+.topContainer{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+ }
+
+ .logo{
+  width: 85rpx;
+  height: 90rpx;
+  margin-left: 50rpx;
+  }
+
+  /* 搜索框 */
+.custom-search {
+  position: relative;
+  width: 100%;
+  max-width: 450rpx;
+  margin: 10px auto;
+  background-color: #dbebf7;
+  border-radius: 25px;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  box-shadow: -2rpx 10rpx 20rpx rgba(0, 0, 0, 0.1), 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.custom-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 16px;
+}
+.searchIconContainer{
+  position: absolute;
+  right: 15px;
+  z-index: 100;
+}
+.search-icon {
+  width: 90rpx;
+  height: 90rpx;
+
+}
+
 /* 地图容器样式 */
 .map-container {
   width: 100%;
@@ -103,11 +150,25 @@
     transform: scale(1.2);
   }
 }
+.window-navBtn{
+  position: absolute;
+  bottom: 30rpx;
+  right: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #aed5f7;
+  border-radius: 50%;
+}
+
+.window-navBtn image{
+  width: 100%;
+  height: 100%;
+}
 
 .window-hand {
   position: absolute;
   bottom: 30rpx;
-  right: 120rpx;
+  right: 150rpx;
   width: 50rpx;
   height: 50rpx;
   animation: handanimate 1s infinite ease-in-out;
