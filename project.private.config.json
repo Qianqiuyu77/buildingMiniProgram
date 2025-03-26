@@ -7,11 +7,22 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/message/message",
+          "pathName": "pages/message/message",
+          "query": "category=商家",
+          "scene": null,
+          "launchMode": "default",
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
           "name": "pages/feedback/feedback",
           "pathName": "pages/feedback/feedback",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/chat/chat",

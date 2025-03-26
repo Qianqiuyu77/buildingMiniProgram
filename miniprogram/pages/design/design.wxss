@@ -168,7 +168,7 @@
 .window-hand {
   position: absolute;
   bottom: 30rpx;
-  right: 150rpx;
+  right: 80rpx;
   width: 50rpx;
   height: 50rpx;
   animation: handanimate 1s infinite ease-in-out;

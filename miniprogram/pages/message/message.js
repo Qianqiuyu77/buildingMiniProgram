@@ -22,6 +22,8 @@ Page({
     showStars: false, // 控制星星动画
     stars: [], // 存放星星的位置
     favouriteFlag: false,
+    isOverlayVisible: false,
+    qrcode: ''
   },
   async onFavouriteClick(e) {
     if(this.data.favouriteFlag) return;
@@ -236,8 +238,26 @@ async getData(){
     })) 
   },
 
+     // 关闭蒙层
+     closeOverlay() {
+      this.setData({
+        isOverlayVisible: false
+      });
+    },
+
   goToMessage(e){
+    let qrcode = e.currentTarget.dataset.qrcode
+    if(qrcode){
+      console.log(qrcode);
+      this.setData({
+        qrcode: qrcode,
+        isOverlayVisible: true
+      })
+      return
+    }
     console.log(e.currentTarget.dataset.url);
+    if(!e.currentTarget.dataset.url) return;
+    console.log(e.currentTarget.dataset.qrcode);
     wx.navigateTo({
       url: '/pages/outer/outer?url='+e.currentTarget.dataset.url,
     })

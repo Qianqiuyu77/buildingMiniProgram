@@ -21,10 +21,7 @@
     </cover-view>
   </map>
 
-  <view class="info-window  {{selectedMarker ? '' : 'hidden'}}" bind:tap="gotoLocations" data-jumplink="{{selectedMarker.jumpLink}}">
-    <view class="window-navBtn" catch:tap="navigationTo" data-location="{{selectedMarker}}">
-      <image src="/images/导航.png" mode=""/>
-    </view>
+  <view class="info-window  {{selectedMarker ? '' : 'hidden'}}" bind:tap="navigationTo" data-location="{{selectedMarker}}">
     <view class="window-hand">
     <image src="/images/小手.png" mode=""/>
     </view>

@@ -9,7 +9,9 @@
   </view>
 </view>
   <scroll-view scroll-y class="container">
-    <view class="article" wx:for="{{mainInfo}}"   wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}">
+    <view class="article" wx:for="{{mainInfo}}"   wx:key="index" bind:tap="goToMessage" data-url="{{item.jumpUrl}}"
+    data-qrcode="{{item.QRCode}}"
+    >
       
       <image  class="articleImg" src="{{item.imgUrl}}"  mode="" />
       <view  class="context">
@@ -42,3 +44,13 @@
 
     </view>
   </scroll-view>
+
+  <view class="overlay" wx:if="{{isOverlayVisible}}">
+  <view class="tips">
+  长按识别商家小程序
+  </view>
+  <view class="content">
+    <image class="qrcodeImg" show-menu-by-longpress="true" src="{{qrcode}}" mode=""/>
+  </view>
+  <button class="close-btn" bindtap="closeOverlay">X</button>
+</view>
