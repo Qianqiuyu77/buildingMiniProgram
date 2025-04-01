@@ -68,6 +68,27 @@
   animation: pulse 1.5s infinite;
 }
 
+.scroll-window{
+  position: absolute;
+  top: 1000rpx;
+  width: 100%;
+  height: 315rpx;
+}
+
+.scroll-info-window {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+  /* transform: translateY(0); */
+  opacity: 1;
+  transition: all 0.3s ease;
+  display: flex;
+  pointer-events: auto;
+  margin-bottom: 10rpx;
+
+}
+
 /* 信息窗口样式 */
 .info-window {
   position: absolute;

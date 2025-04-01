@@ -24,8 +24,8 @@ Page({
     markers: [ // 标记点
     ],
     loading: true,
-    selectedMarker: null
-
+    selectedMarker: null,
+    searchLocationList: []
   },
   inputSearch(e) {
     let searchValue = e.detail.value;
@@ -37,10 +37,11 @@ Page({
 
   getSearchMark() {
     let mainInfo = this.data.locationsInfos;
-    let searchLocation = mainInfo.find(item => {
+    let searchLocationList = mainInfo.filter(item => {
       return item.name && item.name.includes(this.data.searchValue) || item.address && item.address.includes(this.data.searchValue);
     })
-    if (!searchLocation) {
+    console.log(searchLocationList);
+    if (!searchLocationList || searchLocationList.length === 0) {
       wx.showToast({
         title: '数据库中暂时没有此数据！',
         icon: 'error'
@@ -50,12 +51,13 @@ Page({
 
     const mapCtx = wx.createMapContext('myMap'); // 获取地图上下文
     mapCtx.moveToLocation({
-      longitude: searchLocation.longitude,
-      latitude: searchLocation.latitude
+      longitude: searchLocationList[0].longitude,
+      latitude: searchLocationList[0].latitude
     });
-
+    
     this.setData({
-      selectedMarker: searchLocation
+      selectedMarker: searchLocationList[0],
+      searchLocationList: searchLocationList
     })
   },
 
@@ -129,7 +131,8 @@ Page({
   },
   closeWindow() {
     this.setData({
-      selectedMarker: null
+      selectedMarker: null,
+      searchLocationList: []
     })
   },
   gotoLocations(e) {
