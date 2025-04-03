@@ -21,7 +21,7 @@
     </cover-view>
   </map>
   <scroll-view class="scroll-window" scroll-y="{{true}}" enhanced="true" wx:if="{{(searchLocationList && searchLocationList.length > 0)}}" >
-  <view wx:for="{{searchLocationList}}">
+  <view wx:for="{{searchLocationList}}" wx:key="index">
     <view class="scroll-info-window "  bind:tap="navigationTo" data-location="{{item}}">
     <view class="window-close" catch:tap="closeWindow"> x</view>
     <view class="window-img">

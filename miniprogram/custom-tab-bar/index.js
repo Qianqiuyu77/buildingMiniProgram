@@ -18,9 +18,9 @@ Component({
       },
       {
         pagePath: "/pages/design/design",
-        iconPath: "/images/2.png",
-        selectedIconPath: "/images/阴影2.png",
-        text: "设计"
+        iconPath: "/images/地图.png",
+        selectedIconPath: "/images/地图阴影.png",
+        text: "地图"
       },
       {
         pagePath: "/pages/chat/chat",
